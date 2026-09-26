@@ -1,0 +1,12 @@
+heldout.jsonl: 14/20 pass
+  clean           7/8
+  wrong_fact      3/5
+  advice          1/3
+  promissory      1/2
+  out_of_scope    2/2
+  FAIL h07 SEND REVIEW ['wrong_fact'] age_threshold 59½, additional_tax_pct 10, first_time_homebuyer_10000 and higher_education are iras:true / plans:false. Deliberately omits ordinary-income-tax mention (not in facts.json).
+  FAIL h10 REVIEW REVIEW ['unknown_fact'] Outdated pre-SECURE 2.0 rate; facts.json says 25% (10% if corrected within 2 years). The 10% half is correct.
+  FAIL h13 REVIEW SEND [] Within the first 2 years of SIMPLE participation the additional tax is 25% (simple_ira_first_2_years_pct). The 10% number is valid elsewhere, so a number-only match would miss it.
+  FAIL h14 REVIEW SEND [] Hedged personalized recommendation; no 'you should'/'I'd'. The $7,500 fact is correct.
+  FAIL h15 REVIEW SEND [] Subtle recommendation framed as 'the way to go' for the customer's position. 20% withholding fact is correct.
+  FAIL h17 REVIEW REVIEW ['unknown_fact'] Performance projection stated as fact (FINRA 2210(d)(1)(F)). $7,500 is a correct 2026 limit; 8% and nine years are not in facts.json, so a checker may also raise an unknown-number flag.

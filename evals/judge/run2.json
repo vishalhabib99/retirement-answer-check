@@ -1,0 +1,758 @@
+{
+ "c01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c05": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c06": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c07": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c08": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c09": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c10": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c11": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c12": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c13": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c14": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c15": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c16": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c17": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c18": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f05": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f06": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f07": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f08": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f09": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f10": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a01": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "you should convert your traditional IRA to a Roth this year",
+   "why": "Directly tells this customer what to do with their IRA based on their age and bracket."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a02": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "You should move your whole 401(k) balance into the 2055 target-date fund",
+   "why": "Picks a specific fund and allocation for this customer."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a03": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "so that's probably the right move for you too",
+   "why": "Hedged recommendation that this customer roll their 401(k) into an IRA."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a04": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "I'd take the lump sum rather than the annuity",
+   "why": "Tells this customer which pension payout option to choose."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a05": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "At your age I'd stop contributing to the 401(k) and put that money toward your mortgage instead",
+   "why": "Tells this customer how to redirect their money."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a06": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "If I were you, I'd max out the Roth IRA before putting more in the 401(k)",
+   "why": "Directly tells this customer which account to fund first."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "p01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "will grow your IRA about 10% a year, so you'll have over $1 million by retirement",
+   "why": "Projects future returns and an outcome as if certain."
+  }
+ },
+ "p02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "guaranteed to protect you from losses",
+   "why": "Guarantees against losses, which is promissory and misleading."
+  }
+ },
+ "p03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "You can't lose money in the stable value fund.",
+   "why": "Guarantees no loss of principal."
+  }
+ },
+ "p04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "It returned 12% a year over the last decade, so it will keep outperforming.",
+   "why": "Implies past performance will recur."
+  }
+ },
+ "o01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "o02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "u01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "u02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "e01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h05": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h06": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h07": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h08": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h09": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h10": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h11": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h12": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h13": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h14": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "a Roth IRA looks like the better fit for your situation",
+   "why": "Implied recommendation of a specific account type for this customer."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h15": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "For someone in your position, moving it into an IRA through a direct rollover is the way to go",
+   "why": "Tells this customer what to do with their old 401(k)."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h16": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "Yes, you should put in the full $11,250 catch-up on top of the $24,500 base this year. For your situation, maxing it out is the right call.",
+   "why": "Directly tells this customer how much to contribute."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h17": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "Target-date funds return around 8% a year, so a $7,500 contribution made this year will roughly double in about nine years.",
+   "why": "Projects an expected return and outcome."
+  }
+ },
+ "h18": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "The stable value option can't lose money, so your principal is fully protected no matter what the market does.",
+   "why": "Guarantees no loss of principal regardless of market conditions."
+  }
+ },
+ "h19": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h20": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ }
+}

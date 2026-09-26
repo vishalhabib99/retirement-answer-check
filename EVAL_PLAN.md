@@ -9,7 +9,7 @@
 "This eval decides whether we publish **retirement-answer-check v1** as a public reference build."
 
 - **Decision owner:** Vishal Habib
-- **Thresholds:** proposed 2026-09-26, **pending Vishal's sign-off, before the first run**. Once signed off they are frozen; any change goes in the changelog with a reason.
+- **Thresholds:** signed off 2026-09-26, before the first run. Vishal delegated the call ("you recommend") and they were approved as written. They are now frozen; any change goes in the changelog with a reason.
 
 ## 2. Test set
 
@@ -58,4 +58,7 @@ One blocking failure means no v1, whatever the averages look like. With slices t
 
 | Date | Change | Why | Approved by |
 |---|---|---|---|
-| 2026-09-26 | Initial 43 cases and thresholds | — | pending |
+| 2026-09-26 | Initial 43 cases and thresholds | — | Vishal (delegated) |
+| 2026-09-26 | Added `evals/heldout2.jsonl` (20 fact-focused cases, second blind agent), committed before its first run | Held-out set 1 had been read while fixing rules, so it no longer measured the rules blind | Vishal (delegated) |
+| 2026-09-26 | Added the fact-judge layer; judges run blind 3× on label-free inputs (`evals/judge/`). Thresholds unchanged | Rules alone failed the top-harm gate on both blind sets (first-run logs in `evals/heldout*_first_run.txt`) | Vishal (delegated) |
+| 2026-09-26 | Added `evals/heldout.jsonl`: 20 cases written by a separate agent that never saw the checker's rules or the dev cases | Rules built while looking at the 43 dev cases could overfit them; the held-out set measures that | Vishal (delegated) |

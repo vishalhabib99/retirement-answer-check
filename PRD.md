@@ -1,6 +1,6 @@
 # PRD: retirement-answer-check
 
-**Status:** Draft v0.1 (2026-09-26), not public yet
+**Status:** v0.2 (2026-09-26). v0.2 changed the design after blind evals; see §1 "Why an agent".
 **Author:** Vishal Habib
 **Template:** [agentic-product-playbook / agent-prd](https://github.com/vishalhabib99/agentic-product-playbook/blob/main/templates/agent-prd.md)
 
@@ -15,7 +15,7 @@ It is a checker, not an advisor. It never writes answers and never gives financi
 - **User:** The product owner of an AI customer-service assistant at a retirement-plan provider, and the compliance reviewer who signs off on what that assistant says.
 - **Job to be done:** "Let the assistant answer routine retirement questions without me reading every answer, while making sure nothing wrong, non-compliant, or advice-like reaches a customer."
 - **Today:** Either every AI answer goes through human review (safe, slow, and it cancels out the assistant's value), or answers go out with a generic LLM guardrail that isn't tuned to retirement rules and can't show *why* it passed something.
-- **Why an agent:** Two of the three checks aren't agentic at all, and that is on purpose. Wrong facts are caught by plain code against a sourced facts table. Required-disclosure checks are rules. Only the third check, **"is this general education or a personalized recommendation?"**, needs judgment, so only that part uses a model. A pure rules engine misses the advice boundary. A pure LLM judge can't be trusted on numbers.
+- **Why an agent:** v0.1 said wrong facts could be caught by plain code alone, with a model only for the advice boundary. **Blind evals proved that wrong:** pattern rules marked 5 of 15 planted wrong facts SEND, because many wrong claims aren't numbers ("yes, that's exempt", "due by December 31", "up to two a year"). v0.2 keeps the code layer as a fast first pass and adds a model **fact judge** that checks every claim against the same sourced facts table, never against its own memory. A pure rules engine misses meaning; a pure LLM judge without the table can't be trusted on numbers. Each layer covers the other's gap.
 
 ## 2. Scope
 

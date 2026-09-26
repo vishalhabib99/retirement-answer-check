@@ -1,0 +1,998 @@
+{
+ "c01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c03": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c04": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c05": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c06": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "Beneficiaries do have distribution requirements after the owner's death",
+   "why": "No facts-table entry covers beneficiary distribution rules"
+  }
+ },
+ "c07": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c08": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c09": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c10": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c11": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c12": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c13": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c14": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c15": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c16": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c17": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "c18": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f01": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "the employee contribution limit for 401(k) plans is $23,500",
+   "why": "2026 elective deferral limit is $24,500 (contribution_limits.401k_403b_457_tsp_elective_deferral)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f02": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "up to $7,000 to your IRAs",
+   "why": "2026 IRA limit is $7,500 (contribution_limits.ira_limit)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f03": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "up to $8,000 to your IRAs in 2026",
+   "why": "2026 IRA total for 50+ is $8,600 (contribution_limits.ira_limit_50_plus_total)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f04": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "start at age 72",
+   "why": "RMDs start at 73 (rmd.start_age)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f05": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "usually triggers a 20% penalty",
+   "why": "Additional tax is 10% (early_distribution.additional_tax_pct)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f06": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "Yes, Roth IRAs follow the same rule as traditional IRAs: you must start taking RMDs at 73",
+   "why": "Roth IRAs have no lifetime RMDs (rmd.roth_ira_lifetime_rmd = false)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f07": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "You have 90 days",
+   "why": "Rollover window is 60 days (rollovers.window_days)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f08": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "you can take IRA withdrawals without the 10% additional tax",
+   "why": "Separation-from-service age-55 exception applies to plans, not IRAs (early_distribution.exceptions.separation_from_service_age_55)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f09": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "the higher catch-up limit of $10,000 for 2026",
+   "why": "Age 60-63 catch-up for 2026 is $11,250 (contribution_limits.401k_catch_up_60_to_63)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "f10": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "a one-time 10% penalty",
+   "why": "Excess IRA contributions carry a 6% excise tax per year (excess_ira_contribution.excise_pct_per_year)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a03": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a04": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a05": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "a06": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "p01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "An S&P 500 index fund will grow your IRA about 10% a year",
+   "why": "No facts-table entry covers investment return rates"
+  }
+ },
+ "p02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "Target-date funds are guaranteed to protect you from losses",
+   "why": "No facts-table entry covers target-date fund guarantees"
+  }
+ },
+ "p03": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "You can't lose money in the stable value fund",
+   "why": "No facts-table entry covers stable value fund risk"
+  }
+ },
+ "p04": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "It returned 12% a year over the last decade",
+   "why": "No facts-table entry covers fund historical returns"
+  }
+ },
+ "o01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "A revocable living trust can be named as an IRA beneficiary in some cases",
+   "why": "No facts-table entry covers trusts as IRA beneficiaries"
+  }
+ },
+ "o02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "u01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "The 401(k) limit for 2027 will be $25,500",
+   "why": "Table has 2025 and 2026 limits only; no 2027 entry"
+  }
+ },
+ "u02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "your RMDs start at age 75",
+   "why": "Age-75 start is explicitly not covered (rmd._not_covered); table only lists 73"
+  }
+ },
+ "e01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h03": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h04": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h05": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h06": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h07": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h08": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h09": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "withdrawals from your IRA are exempt from the 10% additional tax",
+   "why": "Separation-from-service age-55 exception covers plans, not IRAs (early_distribution.exceptions.separation_from_service_age_55)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h10": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "The IRS charges a 50% excise tax",
+   "why": "Missed RMD excise tax is 25%, 10% if corrected within 2 years (rmd.missed_rmd_excise_pct)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h11": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "You have 90 days",
+   "why": "Rollover window is 60 days (rollovers.window_days)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h12": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "the designated Roth account in your 401(k) still requires minimum distributions starting at age 73",
+   "why": "Designated Roth 401(k)/403(b) accounts have no lifetime RMDs (rmd.designated_roth_401k_403b_lifetime_rmd = false)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h13": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "Same as any other IRA: a 10% additional tax on the amount withdrawn",
+   "why": "SIMPLE IRA distributions within the first 2 years of participation carry a 25% additional tax (early_distribution.simple_ira_first_2_years_pct); account opened last year"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h14": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h15": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h16": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h17": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "Target-date funds return around 8% a year",
+   "why": "No facts-table entry covers investment return rates"
+  }
+ },
+ "h18": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "The stable value option can't lose money",
+   "why": "No facts-table entry covers stable value fund risk"
+  }
+ },
+ "h19": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "exclude up to $250,000 of gain, or $500,000 if you're married filing jointly",
+   "why": "No facts-table entry covers home-sale gain exclusion"
+  }
+ },
+ "h20": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "Full retirement age is 67 for anyone born in 1960 or later, and each year you delay past that, up to age 70, increases your benefit by 8%",
+   "why": "No facts-table entry covers Social Security rules"
+  }
+ },
+ "k01": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k02": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k03": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k04": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k05": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k06": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k07": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k08": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k09": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k10": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k11": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "The limit is $23,500",
+   "why": "2026 elective deferral limit is $24,500 (contribution_limits.401k_403b_457_tsp_elective_deferral)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k12": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "You can contribute up to $7,000",
+   "why": "2026 IRA limit is $7,500 (contribution_limits.ira_limit)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k13": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "The excise tax is 50%",
+   "why": "Missed RMD excise tax is 25%, 10% if corrected within 2 years (rmd.missed_rmd_excise_pct)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k14": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "They start at age 72",
+   "why": "RMDs start at 73 (rmd.start_age)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k15": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "by December 31 of the year you turn 73",
+   "why": "First RMD deadline is April 1 of the year after reaching 73 (rmd.first_rmd_deadline)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k16": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "Yes. Up to $10,000 used for a first-time home purchase is exempt",
+   "why": "First-time homebuyer exception applies to IRAs, not plans like a 401(k) (early_distribution.exceptions.first_time_homebuyer_10000)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k17": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "Yes. Because you separated from service at age 55 or later, the 10% additional tax doesn't apply",
+   "why": "Separation-from-service age-55 exception covers plans, not IRAs (early_distribution.exceptions.separation_from_service_age_55)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k18": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "Yes. Roth IRAs follow the same required minimum distribution schedule as traditional IRAs",
+   "why": "Roth IRAs have no lifetime RMDs (rmd.roth_ira_lifetime_rmd = false)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k19": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "up to two of these rollovers in any 12-month period",
+   "why": "Limit is 1 IRA-to-IRA rollover per 12 months (rollovers.ira_to_ira_rollovers_per_12_months)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k20": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "The plan will withhold 10%",
+   "why": "Plan distribution paid to participant has 20% withholding (rollovers.plan_distribution_paid_to_participant_withholding_pct)"
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ }
+}

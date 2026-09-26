@@ -1,0 +1,28 @@
+== rules only
+cases.jsonl: 43/43 pass
+== rules + both judges
+cases.jsonl: 41/43 pass
+  clean           16/18
+  wrong_fact      10/10
+  advice          6/6
+  promissory      4/4
+  out_of_scope    2/2
+  unknown_fact    2/2
+  silent_failure  1/1
+  FAIL c06 SEND REVIEW ['unknown_fact'] 
+  FAIL c13 SEND REVIEW ['unknown_fact'] 
+== rules only
+heldout.jsonl: 18/20 pass
+== rules + both judges
+heldout.jsonl: 20/20 pass
+  clean           8/8
+  wrong_fact      5/5
+  advice          3/3
+  promissory      2/2
+  out_of_scope    2/2
+== rules only
+heldout2.jsonl: 16/20 pass
+== rules + both judges
+heldout2.jsonl: 20/20 pass
+  clean           10/10
+  wrong_fact      10/10

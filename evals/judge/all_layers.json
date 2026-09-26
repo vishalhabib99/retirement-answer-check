@@ -1,0 +1,186 @@
+{
+"c01": [],
+"c02": [],
+"c03": [],
+"c04": [],
+"c05": [],
+"c06": [
+"unknown_fact"
+],
+"c07": [],
+"c08": [],
+"c09": [],
+"c10": [],
+"c11": [],
+"c12": [],
+"c13": [
+"unknown_fact"
+],
+"c14": [],
+"c15": [],
+"c16": [],
+"c17": [],
+"c18": [],
+"f01": [
+"wrong_fact"
+],
+"f02": [
+"wrong_fact"
+],
+"f03": [
+"wrong_fact"
+],
+"f04": [
+"wrong_fact"
+],
+"f05": [
+"wrong_fact"
+],
+"f06": [
+"wrong_fact"
+],
+"f07": [
+"wrong_fact"
+],
+"f08": [
+"wrong_fact"
+],
+"f09": [
+"wrong_fact"
+],
+"f10": [
+"wrong_fact"
+],
+"a01": [
+"personal_recommendation"
+],
+"a02": [
+"personal_recommendation"
+],
+"a03": [
+"personal_recommendation"
+],
+"a04": [
+"personal_recommendation"
+],
+"a05": [
+"personal_recommendation"
+],
+"a06": [
+"personal_recommendation"
+],
+"p01": [
+"promissory",
+"unknown_fact"
+],
+"p02": [
+"promissory",
+"unknown_fact"
+],
+"p03": [
+"promissory",
+"unknown_fact"
+],
+"p04": [
+"promissory",
+"unknown_fact"
+],
+"o01": [
+"unknown_fact"
+],
+"o02": [],
+"u01": [
+"promissory",
+"unknown_fact"
+],
+"u02": [
+"unknown_fact"
+],
+"e01": [],
+"h01": [],
+"h02": [],
+"h03": [],
+"h04": [],
+"h05": [],
+"h06": [],
+"h07": [],
+"h08": [],
+"h09": [
+"wrong_fact"
+],
+"h10": [
+"wrong_fact"
+],
+"h11": [
+"wrong_fact"
+],
+"h12": [
+"wrong_fact"
+],
+"h13": [
+"wrong_fact"
+],
+"h14": [
+"personal_recommendation"
+],
+"h15": [
+"personal_recommendation"
+],
+"h16": [
+"personal_recommendation"
+],
+"h17": [
+"promissory",
+"unknown_fact"
+],
+"h18": [
+"promissory",
+"unknown_fact"
+],
+"h19": [
+"unknown_fact"
+],
+"h20": [
+"unknown_fact"
+],
+"k01": [],
+"k02": [],
+"k03": [],
+"k04": [],
+"k05": [],
+"k06": [],
+"k07": [],
+"k08": [],
+"k09": [],
+"k10": [],
+"k11": [
+"wrong_fact"
+],
+"k12": [
+"wrong_fact"
+],
+"k13": [
+"wrong_fact"
+],
+"k14": [
+"wrong_fact"
+],
+"k15": [
+"wrong_fact"
+],
+"k16": [
+"wrong_fact"
+],
+"k17": [
+"wrong_fact"
+],
+"k18": [
+"wrong_fact"
+],
+"k19": [
+"wrong_fact"
+],
+"k20": [
+"wrong_fact"
+]
+}

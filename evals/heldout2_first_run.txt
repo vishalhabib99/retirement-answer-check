@@ -1,0 +1,8 @@
+heldout2.jsonl: 15/20 pass
+  clean           9/10
+  wrong_fact      6/10
+  FAIL k09 SEND REVIEW ['wrong_fact'] SIMPLE 25% first-2-years rule, 59½, 10%.
+  FAIL k15 REVIEW SEND [] Wrong deadline: first RMD may be delayed to April 1 of the year after reaching 73.
+  FAIL k16 REVIEW SEND [] Exception on wrong account type: first-time homebuyer is IRA-only; plan type only in question.
+  FAIL k17 REVIEW SEND [] Exception on wrong account type: age-55 separation is plans-only; IRA only in question.
+  FAIL k19 REVIEW SEND [] Wrong rollover frequency: limit is one per 12 months. IRA-to-IRA only in question.
