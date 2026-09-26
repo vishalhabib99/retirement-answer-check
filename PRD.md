@@ -39,7 +39,7 @@ It is a checker, not an advisor. It never writes answers and never gives financi
 ## 4. Top-harm error
 
 - **The single most harmful thing:** marking SEND on an answer that has a wrong number or a personalized recommendation in it.
-- **Who gets hurt, and how badly:** The customer acts on it. For example, an over-contribution to an IRA is charged a 6% excise tax for each year it stays in the account; missing a required minimum distribution carries its own excise tax. The provider takes on regulatory exposure for advice it never meant to give.
+- **Who gets hurt, and how badly:** The customer acts on it. For example, excess IRA contributions are taxed at 6% for each year they stay in the IRA ([IRS](https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits)), and an RMD not taken in full can be hit with a 25% excise tax on the shortfall, 10% if corrected within two years ([IRS RMD FAQs](https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs)). The provider takes on regulatory exposure for advice it never meant to give.
 - **Maximum acceptable rate:** 0 missed wrong-fact cases in the eval set (these are deterministic, so anything above 0 is a bug). For the advice boundary, recall ≥ 95% on the eval set, with every miss written up.
 - **How it's prevented (not just detected):**
   - Numbers are never judged by a model. Any number in the answer that the facts table covers is checked by code.
@@ -95,7 +95,7 @@ It is a checker, not an advisor. It never writes answers and never gives financi
 
 - IRS Publication 590-A (IRA contributions) and 590-B (IRA distributions, RMDs)
 - IRS annual contribution-limit announcements for 401(k)/403(b)/IRA
-- FINRA Rule 2210 (communications with the public: fair and balanced, no promissory claims)
+- [FINRA Rule 2210](https://www.finra.org/rules-guidance/rulebooks/finra-rules/2210)(d)(1): communications must be fair and balanced; no "false, exaggerated, unwarranted, promissory or misleading" statements; no predicting or projecting performance
 - SEC Regulation Best Interest (context for where "recommendation" begins)
 
 Every number goes into the facts table only after it has been checked against the current IRS source. None are in this PRD on purpose.
