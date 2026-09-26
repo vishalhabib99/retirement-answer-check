@@ -27,6 +27,32 @@ Selection rule: the best-known human-review features in each category that an AI
 
 ---
 
-## Results
+## Round 1 results (checked 2026-09-26)
 
-*(filled in after checking)*
+**Precondition: met.** Three independent sources:
+- EU AI Act [Art. 14(4)(b)](https://artificialintelligenceact.eu/article/14/): people overseeing high-risk AI must "remain aware of the possible tendency of automatically relying or over-relying on the output… (automation bias)".
+- Dell'Acqua et al. 2023 ([paper](https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf)), 758 BCG consultants: on a task outside the frontier, "consultants using AI were 19 percentage points less likely to produce" correct solutions (control ~84.5% correct vs 60–70% with AI).
+- Goddard, Roudsari & Wyatt, [JAMIA 2012](https://academic.oup.com/jamia/article-abstract/19/1/121/732254), systematic review of 74 studies: users often fail "to recognize the new errors that CDSS can introduce."
+
+| # | Tool | Result | Evidence |
+|---|---|---|---|
+| 1 | Amazon A2I | **N/A** | [Docs](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-create-flow-definition.html): "no longer open to new customers… we do not plan to introduce new features." A team starting today can't adopt it. Not replaced. |
+| 2 | Label Studio | Miss | [Docs](https://docs.humansignal.com/guide/ground_truths): Enterprise "compares annotations from annotators… against the ground truth annotations… to calculate an accuracy score". Enterprise-only, which the bar counts as present. |
+| 3 | LangSmith annotation queues | **Hit** | [Docs](https://docs.langchain.com/langsmith/annotation-queues): multiple reviewers per run, but no gold items, reviewer accuracy, or agreement metric. |
+| 4 | Langfuse annotation queues | **Hit** | [Docs](https://langfuse.com/docs/evaluation/evaluation-methods/annotation-queues): measures human-vs-LLM-judge agreement (to calibrate the judge), not reviewer quality. |
+| 5 | Arize Phoenix annotations | **Hit** | [Docs](https://arize.com/docs/phoenix/tracing/concepts-tracing/annotations-concepts): none documented. |
+| 6 | Braintrust human review | Miss | [Docs](https://www.braintrust.dev/docs/annotate/human-review/multiple-reviewers): per span, shows how many reviews match vs diverge "to gauge consensus". A basic agreement signal, so counted as present (the conservative call). |
+
+**Result:** 3 hits of 5 valid examples (1 N/A). Falls in the pre-set 2–3 band.
+**Decision: Narrow and re-check** (round 1 of at most 2).
+**What's partly filled:** general labeling tools (Label Studio, paid) score reviewers against gold answers; Braintrust shows per-item consensus. **What looks open:** the LLM-observability review queues AI teams actually use for production output don't check whether reviewers catch errors.
+
+---
+
+## Round 2 (bar and new sample saved before checking)
+
+**Narrowed claim:** Review tools built for *LLM production output* don't document a way to test reviewers with known answers: seeding items whose correct verdict is already known and scoring reviewers on them. That's the direct measure of whether a reviewer catches an AI error or rubber-stamps it.
+
+**New sample (none from round 1):** 5 LLM-output review features: W&B Weave (human feedback), Comet Opik (annotation queues), MLflow / Databricks (review app / labeling sessions), Argilla (Hugging Face), Datadog LLM Observability (annotation queues). Selection rule: the other well-known LLM-eval and LLM-observability products with a human-review feature, named before reading their docs.
+
+**Bar:** hit = official docs show no known-answer/gold reviewer scoring for LLM-output review. Agreement-only features still count as a hit here, since agreement between two reviewers who both rubber-stamp says nothing about catching errors. **Build if ≥ 3 of 5 hits. Don't build if ≤ 2.** No further narrowing after this round.
