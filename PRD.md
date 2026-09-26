@@ -50,6 +50,7 @@ It is a checker, not an advisor. It never writes answers and never gives financi
 
 - **Triggers:** any flag, any out-of-scope topic, any unrecognized number, any low-confidence advice-boundary call.
 - **What the human receives:** the draft answer, the customer's question, each flag with its type, the exact span flagged, the source, and a suggested correction where there is one.
+- **Is the review itself working:** known-answer checks are mixed into the queue, including bad answers shown with no flag, and each reviewer is scored on them (`review/`). Added 2026-09-26 after a [build-or-not check](docs/build-or-not-human-review.md).
 - **The user never has to repeat themselves:** Yes. The customer never sees the checker. The reviewer works from the original question.
 
 ## 6. Success metrics

@@ -63,6 +63,36 @@ The 2 false REVIEWs were true statements the facts table doesn't cover (benefici
 
 Raw outputs: [`evals/`](evals/) (cases, first-run logs, all judge runs).
 
+## Human review queue: is the review itself working?
+
+Every REVIEW goes to a person. But people reviewing AI output measurably miss its errors: consultants using GPT-4 were [19 percentage points less likely to be right](https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf) on a task outside what it handles well, and the EU AI Act ([Art. 14(4)(b)](https://artificialintelligenceact.eu/article/14/)) names automation bias outright. Of 10 LLM review tools checked, 7 give no way to test whether reviewers catch errors ([decision record](docs/build-or-not-human-review.md)).
+
+`review/` adds that test. It mixes **known-answer checks** into the queue, cases whose right verdict is already known, and they look exactly like real items:
+
+| Check | Shown as | Right call | What it catches |
+|---|---|---|---|
+| Bad answer, flagged | flagged, with the checker's reasons | Reject | Approving despite flags |
+| **Bad answer, no flag** | a random audit sample of passed answers | Reject | **Automation bias:** only acting when the checker flags |
+| Good answer | a random audit sample | Approve | Rejecting everything to be safe |
+
+```bash
+python review/build_queue.py            # -> review/out/review.html (for the reviewer) + key.json (keep it from them)
+# the reviewer opens review.html, decides each item (A / R keys), downloads their decisions
+python review/score.py review-decisions-<name>.json review/out/key.json
+```
+
+The page is one self-contained file with no server and no tracking. Progress is saved in the reviewer's browser. The answer key is never in the page, and a test enforces that.
+
+Scripted reviewers on the demo queue (**policies, not people**; `python review/score.py --policy <name> review/out/review.html review/out/key.json`) show each check doing its job:
+
+| Scripted policy | Flagged bad caught | Unflagged bad caught | Good approved |
+|---|---|---|---|
+| Approve everything | 0/2 | 0/2 | 2/2 |
+| Follow the flags exactly | 2/2 | **0/2** | 2/2 |
+| Reject everything | 2/2 | 2/2 | **0/2** |
+
+**Not yet known:** how real reviewers score. That needs real people and will be reported as-is. **Demo caveat:** the demo has few live answers, so 4 of its 11 audit samples are tests. In production the checker passes far more answers than it flags, so audit samples would be mostly real.
+
 ## Use it in Claude Code
 
 ```bash
