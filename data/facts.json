@@ -1,0 +1,54 @@
+{
+  "_about": "Facts the checker verifies with code. Every value was read from the cited IRS page on 2026-09-26. A number in an answer that no entry here covers is treated as unknown -> REVIEW.",
+  "_verified_on": "2026-09-26",
+  "sources": {
+    "irs_2026_limits": "https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500",
+    "irs_ira_limits": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits",
+    "irs_rmd_faq": "https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs",
+    "irs_rollovers": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions",
+    "irs_early_dist": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions"
+  },
+  "contribution_limits": {
+    "401k_403b_457_tsp_elective_deferral": {"2025": 23500, "2026": 24500, "source": "irs_2026_limits"},
+    "401k_catch_up_50_plus":               {"2025": 7500,  "2026": 8000,  "source": "irs_2026_limits"},
+    "401k_catch_up_60_to_63":              {"2026": 11250, "source": "irs_2026_limits"},
+    "ira_limit":                           {"2025": 7000,  "2026": 7500,  "source": "irs_ira_limits"},
+    "ira_limit_50_plus_total":             {"2025": 8000,  "2026": 8600,  "source": "irs_ira_limits"},
+    "ira_catch_up_50_plus":                {"2026": 1100,  "source": "irs_2026_limits"},
+    "simple_limit":                        {"2025": 16500, "2026": 17000, "source": "irs_2026_limits"},
+    "simple_catch_up_50_plus":             {"2025": 3500,  "2026": 4000,  "source": "irs_2026_limits"},
+    "_rule": "IRA contributions can't exceed the dollar limit or taxable compensation for the year, whichever is smaller (irs_ira_limits)."
+  },
+  "rmd": {
+    "start_age": {"value": 73, "source": "irs_rmd_faq"},
+    "first_rmd_deadline": {"value": "April 1 of the year after reaching 73", "source": "irs_rmd_faq"},
+    "roth_ira_lifetime_rmd": {"value": false, "source": "irs_rmd_faq"},
+    "designated_roth_401k_403b_lifetime_rmd": {"value": false, "source": "irs_rmd_faq"},
+    "missed_rmd_excise_pct": {"value": 25, "corrected_within_2_years_pct": 10, "source": "irs_rmd_faq"},
+    "_not_covered": "Age-75 start for later birth years is not in this table yet, so any answer citing it goes to REVIEW."
+  },
+  "excess_ira_contribution": {
+    "excise_pct_per_year": {"value": 6, "source": "irs_ira_limits"},
+    "avoid_by": {"value": "withdraw excess and its earnings by the tax return due date, including extensions", "source": "irs_ira_limits"}
+  },
+  "early_distribution": {
+    "age_threshold": {"value": "59½", "source": "irs_early_dist"},
+    "additional_tax_pct": {"value": 10, "source": "irs_early_dist"},
+    "simple_ira_first_2_years_pct": {"value": 25, "source": "irs_early_dist"},
+    "exceptions": {
+      "separation_from_service_age_55": {"plans": true,  "iras": false},
+      "first_time_homebuyer_10000":     {"plans": false, "iras": true},
+      "higher_education":               {"plans": false, "iras": true},
+      "birth_or_adoption_5000":         {"plans": true,  "iras": true},
+      "emergency_personal_expense_1000":{"plans": true,  "iras": true},
+      "death":                          {"plans": true,  "iras": true},
+      "disability":                     {"plans": true,  "iras": true},
+      "source": "irs_early_dist"
+    }
+  },
+  "rollovers": {
+    "window_days": {"value": 60, "source": "irs_rollovers"},
+    "ira_to_ira_rollovers_per_12_months": {"value": 1, "excludes": ["trustee-to-trustee transfers", "traditional-to-Roth conversions", "IRA-to-plan", "plan-to-IRA", "plan-to-plan"], "source": "irs_rollovers"},
+    "plan_distribution_paid_to_participant_withholding_pct": {"value": 20, "avoid_by": "direct rollover", "source": "irs_rollovers"}
+  }
+}
