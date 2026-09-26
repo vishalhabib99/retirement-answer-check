@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contribution Room 2026</title>
+<meta name="description" content="How much more can you put into your 401(k), IRA and Roth IRA in 2026? Every number links to its IRS source.">
+<style>
+  :root {
+    --bg: #F6F7F9; --surface: #FFFFFF; --text: #151A2D; --soft: #525B70; --faint: #8A92A5;
+    --border: #E2E5EC; --accent: #1D4ED8; --accent-soft: #E8EEFC;
+    --flag: #B45309; --flag-soft: #FEF3C7; --ok: #047857; --ok-soft: #D1FAE5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1117; --surface: #161B26; --text: #ECEEF3; --soft: #A7AEC0; --faint: #6B7387;
+      --border: #272D3B; --accent: #7B9CF8; --accent-soft: #1B2740;
+      --flag: #FBBF24; --flag-soft: #3A2A0B; --ok: #34D399; --ok-soft: #0D2E24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1117; --surface: #161B26; --text: #ECEEF3; --soft: #A7AEC0; --faint: #6B7387;
+    --border: #272D3B; --accent: #7B9CF8; --accent-soft: #1B2740;
+    --flag: #FBBF24; --flag-soft: #3A2A0B; --ok: #34D399; --ok-soft: #0D2E24;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 24px 16px 48px; }
+  .page { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 0 0 4px; letter-spacing: -.01em; }
+  .sub { color: var(--soft); margin: 0 0 20px; font-size: 14px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 14px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--soft); }
+  .hint { font-weight: 400; color: var(--faint); }
+  input, select { width: 100%; margin-top: 4px; font: inherit; color: var(--text); background: var(--bg);
+                  border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .money { position: relative; display: block; }
+  .money::before { content: "$"; position: absolute; left: 11px; top: 50%; transform: translateY(-40%); color: var(--faint); }
+  .money input { padding-left: 22px; }
+  .hidden { display: none; }
+  .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 12px; margin-bottom: 14px; }
+  .room { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+  .room .k { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--faint); }
+  .room .v { font-size: 30px; font-weight: 700; margin: 2px 0 6px; font-variant-numeric: tabular-nums; }
+  .room .v.zero { color: var(--faint); }
+  .room .w { font-size: 13px; color: var(--soft); }
+  .room .limit { font-size: 13px; color: var(--faint); margin-top: 8px; border-top: 1px solid var(--border); padding-top: 8px; }
+  a { color: var(--accent); }
+  .src { font-size: 12px; }
+  .warn { background: var(--flag-soft); color: var(--flag); border-radius: 10px; padding: 10px 14px; margin-bottom: 10px; font-size: 14px; }
+  .note { font-size: 14px; color: var(--soft); margin: 4px 0; }
+  details { font-size: 14px; color: var(--soft); }
+  summary { cursor: pointer; font-weight: 600; color: var(--text); }
+  details ul { margin: 8px 0 0; padding-left: 20px; }
+  .foot { font-size: 13px; color: var(--faint); margin-top: 20px; }
+  .foot code { font-size: 12px; background: var(--accent-soft); color: var(--text); padding: 1px 5px; border-radius: 5px; }
+  .error { color: var(--flag); }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>How much more can I put in this year?</h1>
+  <p class="sub">2026 room left in your 401(k), IRA and Roth IRA. Every number links to its IRS source. Nothing you type leaves your browser.</p>
+
+  <form class="card grid" id="f" autocomplete="off" onsubmit="return false">
+    <label>Your age on Dec 31, 2026
+      <input id="age" type="number" inputmode="numeric" min="0" max="120" value="45"></label>
+    <label>Earned income in 2026 <span class="hint">(wages, self-employment)</span>
+      <span class="money"><input id="comp" type="number" inputmode="decimal" min="0" value="90000"></span></label>
+    <label>Workplace plan
+      <select id="plan">
+        <option value="401k">401(k), 403(b) or TSP</option>
+        <option value="simple">SIMPLE IRA</option>
+        <option value="none">None</option>
+      </select></label>
+    <label id="deferred-wrap">You've deferred so far this year
+      <span class="money"><input id="deferred" type="number" inputmode="decimal" min="0" value="0"></span></label>
+    <label>Traditional IRA contributions for 2026
+      <span class="money"><input id="trad" type="number" inputmode="decimal" min="0" value="0"></span></label>
+    <label>Roth IRA contributions for 2026
+      <span class="money"><input id="roth" type="number" inputmode="decimal" min="0" value="0"></span></label>
+    <label>Filing status
+      <select id="status">
+        <option value="single">Single</option>
+        <option value="married_joint">Married filing jointly</option>
+        <option value="head_of_household">Head of household</option>
+        <option value="married_separate">Married filing separately</option>
+        <option value="qualifying_surviving_spouse">Qualifying surviving spouse</option>
+      </select></label>
+    <label>Modified AGI <span class="hint">(for the Roth income limit; leave blank to skip)</span>
+      <span class="money"><input id="magi" type="number" inputmode="decimal" min="0" placeholder="e.g. 95000"></span></label>
+    <label id="lived-wrap" class="hidden">
+      <span><input id="lived" type="checkbox" style="width:auto;margin-right:6px">Lived with my spouse at any time in 2026</span></label>
+  </form>
+
+  <div id="warnings"></div>
+  <div class="results" id="results" aria-live="polite"></div>
+
+  <div class="card">
+    <div id="notes"></div>
+    <details><summary>Not covered yet</summary><ul id="notcovered"></ul></details>
+  </div>
+
+  <p class="foot">
+    <span id="verified"></span> General IRS rules, not tax or financial advice. Built on the
+    <a href="https://github.com/vishalhabib99/retirement-answer-check">retirement-answer-check</a> facts table, where every number has a source.
+    For AI assistants, the same logic is the <code>contribution_room</code> MCP tool, so they don't have to quote limits from memory.
+  </p>
+</div>
+
+<script src="room.js"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const fmt = n => "$" + Math.round(n).toLocaleString("en-US");
+  const num = id => { const v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v : 0; };
+  let FACTS = null;
+
+  function pair(lines, roomLabel, limitLabel, title) {
+    const room = lines.find(l => l.label === roomLabel);
+    if (!room) return "";
+    const limit = limitLabel && lines.find(l => l.label === limitLabel);
+    const amt = room.amount;
+    const v = amt === null ? "—" : fmt(amt);
+    return `<div class="room"><div class="k">${title}</div>
+      <div class="v${amt === 0 ? " zero" : ""}">${v}</div>
+      <div class="w">${esc(room.why)} <a class="src" href="${room.source}" target="_blank" rel="noopener">IRS source</a></div>
+      ${limit ? `<div class="limit">Limit ${fmt(limit.amount)} · ${esc(limit.why)}</div>` : ""}</div>`;
+  }
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  function render() {
+    const plan = $("plan").value, status = $("status").value;
+    $("deferred-wrap").classList.toggle("hidden", plan === "none");
+    $("lived-wrap").classList.toggle("hidden", status !== "married_separate");
+    if (!FACTS) return;
+    let r;
+    try {
+      r = Room.contributionRoom(FACTS, {
+        age_at_year_end: Math.trunc(num("age")), compensation: num("comp"), plan_type: plan,
+        plan_deferrals_so_far: plan === "none" ? 0 : num("deferred"),
+        traditional_ira_so_far: num("trad"), roth_ira_so_far: num("roth"),
+        magi: $("magi").value.trim() === "" ? null : num("magi"),
+        filing_status: status, lived_with_spouse: $("lived").checked,
+      });
+    } catch (e) { $("results").innerHTML = `<p class="error">${esc(e.message)}</p>`; return; }
+    const L = r.lines;
+    $("results").innerHTML =
+      pair(L, "401(k) room left", "401(k) / 403(b) / TSP limit", "401(k) room left") +
+      pair(L, "SIMPLE IRA room left", "SIMPLE IRA limit", "SIMPLE IRA room left") +
+      pair(L, "Traditional IRA room left", "IRA limit (traditional + Roth combined)", "Traditional IRA room left") +
+      pair(L, "Roth IRA room left", null, "Roth IRA room left");
+    $("warnings").innerHTML = r.warnings.map(w => `<div class="warn">${esc(w)}</div>`).join("");
+    $("notes").innerHTML = r.notes.concat(["Traditional and Roth IRAs share one limit: money in one reduces room in the other."])
+      .map(n => `<p class="note">${esc(n)}</p>`).join("");
+    $("notcovered").innerHTML = r.not_covered.map(n => `<li>${esc(n)}</li>`).join("");
+    $("verified").textContent = "Limits checked against IRS pages on " + r.facts_verified_on + ".";
+  }
+
+  $("f").addEventListener("input", render);
+  $("f").addEventListener("change", render);
+  fetch("facts.json").then(r => r.json()).then(f => { FACTS = f; render(); })
+    .catch(() => { $("results").innerHTML = '<p class="error">Couldn\'t load the IRS facts table. Refresh to try again.</p>'; });
+  render();
+})();
+</script>
+</body>
+</html>

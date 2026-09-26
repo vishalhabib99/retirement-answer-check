@@ -21,11 +21,21 @@ Any flag → **REVIEW**. When a layer is unsure, it flags.
 
 ## How it works
 
-1. **MCP server** (`check_answer`, `get_facts`). Fast, deterministic pattern rules for numbers, rules, scope, and obvious phrasing. Both tools are read-only and annotated that way.
+1. **MCP server** (`check_answer`, `get_facts`, plus [`contribution_room`](#contribution-room-calculator)). Fast, deterministic pattern rules for numbers, rules, scope, and obvious phrasing. All three tools are read-only and annotated that way.
 2. **fact-judge skill.** A model reads the facts table and checks *every* claim, including ones that aren't numbers ("yes, that's exempt", "due by December 31").
 3. **advice-judge skill.** A model judges the advice boundary and promissory language.
 
 Every number in `facts.json` was read from the cited IRS page on 2026-09-26: [2026 limits](https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500), [IRA limits](https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits), [RMDs](https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs), [rollovers](https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions), [early distributions](https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions).
+
+## Contribution room calculator
+
+**[How much more can I put in this year?](https://vishalhabib99.github.io/retirement-answer-check/room/)** Enter your age, income and what you've contributed so far. It shows the 2026 room left in your 401(k)/403(b)/TSP or SIMPLE IRA, traditional IRA and Roth IRA, with an IRS link on every number. It runs in your browser, with no account and no tracking.
+
+The same logic is the `contribution_room` MCP tool, so an AI assistant can compute the numbers instead of quoting last year's limits from memory. It's deterministic (no model) and uses the same facts table:
+
+- The age 60–63 catch-up ($11,250) and the Roth income phase-out, using the exact IRS Pub 590-A Worksheet 2-2 method. It's tested against the IRS's own worked example ($6,540).
+- The page ([`docs/room/room.js`](docs/room/room.js)) and the tool ([`room.py`](src/retirement_answer_check/room.py)) are checked against each other on 400 inputs in [`tests/test_room_parity.py`](tests/test_room_parity.py).
+- Anything the table doesn't cover (spousal IRAs, IRA deductibility, the Roth catch-up rule for high earners, employer contributions) is listed as **not covered** rather than guessed.
 
 ## Results
 

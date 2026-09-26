@@ -2,9 +2,11 @@
 from __future__ import annotations
 
 from mcp.server.mcpserver import MCPServer
+from mcp.server.mcpserver.exceptions import ToolError
 from mcp.types import ToolAnnotations
 
 from .checker import FACTS, check
+from .room import contribution_room as _room
 
 mcp = MCPServer("retirement-answer-check")
 READ_ONLY = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=False)
@@ -44,6 +46,46 @@ def get_facts() -> dict:
         return FACTS
     except Exception as exc:
         raise RuntimeError(f"facts table unavailable ({exc}); check data/facts.json is present and valid JSON") from exc
+
+
+@mcp.tool(annotations=READ_ONLY)
+def contribution_room(
+    age_at_year_end: int,
+    compensation: float,
+    year: int = 2026,
+    plan_type: str = "none",
+    plan_deferrals_so_far: float = 0,
+    traditional_ira_so_far: float = 0,
+    roth_ira_so_far: float = 0,
+    magi: float | None = None,
+    filing_status: str = "single",
+    lived_with_spouse: bool = False,
+) -> dict:
+    """Compute how much more a person can contribute this year to a 401(k)/403(b)/TSP or SIMPLE IRA,
+    a traditional IRA and a Roth IRA, using IRS-sourced limits. Deterministic: call this instead of
+    stating contribution limits from memory, which are often last year's.
+
+    Returns {"lines": [{"label", "amount", "why", "source"}], "warnings", "notes", "not_covered"}.
+    Relay "not_covered" to the user rather than filling those gaps. Not tax or financial advice.
+
+    Args:
+        age_at_year_end: The person's age on December 31 of `year`. Drives the 50+ and 60-63 catch-ups.
+        compensation: Taxable compensation (wages, self-employment income) for the year. Caps the IRA limit.
+        year: Tax year. Only 2026 is supported.
+        plan_type: "401k" (also 403(b) and TSP), "simple", or "none".
+        plan_deferrals_so_far: Employee deferrals to the workplace plan so far this year.
+        traditional_ira_so_far: Traditional IRA contributions made for this year so far.
+        roth_ira_so_far: Roth IRA contributions made for this year so far.
+        magi: Modified AGI for Roth purposes. Without it, no Roth amount is returned.
+        filing_status: "single", "head_of_household", "married_joint", "married_separate" or
+            "qualifying_surviving_spouse".
+        lived_with_spouse: For married_separate only: whether they lived with their spouse at any time in the year.
+    """
+    try:
+        return _room(age_at_year_end, compensation, year, plan_type, plan_deferrals_so_far,
+                     traditional_ira_so_far, roth_ira_so_far, magi, filing_status, lived_with_spouse)
+    except ValueError as exc:
+        raise ToolError(f"{exc}. Fix the input and call again.") from exc
 
 
 def main() -> None:
