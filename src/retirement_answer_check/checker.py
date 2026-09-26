@@ -11,7 +11,10 @@ import json
 import re
 from pathlib import Path
 
-FACTS_PATH = Path(__file__).resolve().parents[2] / "data" / "facts.json"
+# In a repo checkout, data/facts.json is the source of truth. An installed wheel carries a
+# copy inside the package (see [tool.hatch.build.targets.wheel.force-include]).
+_REPO_FACTS = Path(__file__).resolve().parents[2] / "data" / "facts.json"
+FACTS_PATH = _REPO_FACTS if _REPO_FACTS.exists() else Path(__file__).resolve().parent / "facts.json"
 FACTS = json.loads(FACTS_PATH.read_text())
 SOURCES = FACTS["sources"]
 CURRENT_YEAR = int(FACTS["_verified_on"][:4])

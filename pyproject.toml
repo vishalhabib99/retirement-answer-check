@@ -16,3 +16,6 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/retirement_answer_check"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"data/facts.json" = "retirement_answer_check/facts.json"
