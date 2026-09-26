@@ -81,7 +81,7 @@ python review/build_queue.py            # -> review/out/review.html (for the rev
 python review/score.py review-decisions-<name>.json review/out/key.json
 ```
 
-**Try it:** [`docs/review-demo/`](docs/review-demo/index.html) is the demo queue (29 items, 6 checks), built with the default seed 7. Its key isn't committed, but anyone can rebuild it from this public repo, so for real reviews build with your own private `--seed`.
+**Try it:** [the demo queue](https://vishalhabib99.github.io/retirement-answer-check/review-demo/) (source: [`docs/review-demo/`](docs/review-demo/index.html)) has 29 items, 6 of them checks, built with the default seed 7. Its key isn't committed, but anyone can rebuild it from this public repo, so for real reviews build with your own private `--seed`.
 
 The page is one self-contained file with no server and no tracking. Progress is saved in the reviewer's browser. The answer key is never in the page, and a test enforces that.
 
