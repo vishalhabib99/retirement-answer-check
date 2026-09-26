@@ -1,0 +1,101 @@
+# PRD: retirement-answer-check
+
+**Status:** Draft v0.1 (2026-09-26), not public yet
+**Author:** Vishal Habib
+**Template:** [agentic-product-playbook / agent-prd](https://github.com/vishalhabib99/agentic-product-playbook/blob/main/templates/agent-prd.md)
+
+A pre-send checker for AI-drafted answers to retirement-account questions. It sits between a customer-service AI assistant and the customer, and it decides whether each draft answer can go out or must go to a human reviewer.
+
+It is a checker, not an advisor. It never writes answers and never gives financial advice.
+
+---
+
+## 1. Problem and user
+
+- **User:** The product owner of an AI customer-service assistant at a retirement-plan provider, and the compliance reviewer who signs off on what that assistant says.
+- **Job to be done:** "Let the assistant answer routine retirement questions without me reading every answer, while making sure nothing wrong, non-compliant, or advice-like reaches a customer."
+- **Today:** Either every AI answer goes through human review (safe, slow, and it cancels out the assistant's value), or answers go out with a generic LLM guardrail that isn't tuned to retirement rules and can't show *why* it passed something.
+- **Why an agent:** Two of the three checks aren't agentic at all, and that is on purpose. Wrong facts are caught by plain code against a sourced facts table. Required-disclosure checks are rules. Only the third check, **"is this general education or a personalized recommendation?"**, needs judgment, so only that part uses a model. A pure rules engine misses the advice boundary. A pure LLM judge can't be trusted on numbers.
+
+## 2. Scope
+
+| The checker WILL | The checker WILL NOT (even if asked) |
+|---|---|
+| Flag factual errors about contribution limits, catch-up contributions, RMD ages, early-withdrawal penalties and exceptions, rollover timing | Rewrite or "fix" the answer. It flags; a human or the assistant revises |
+| Flag answers that cross from general education into a personalized recommendation | Give its own view on what the customer should do |
+| Flag promissory or misleading language ("guaranteed returns", "you can't lose") and missing required framing | Judge anything outside retirement accounts (taxes in general, insurance, estate planning). Out of scope → routed to a human |
+| Cite the source for every fact flag (IRS publication, rule text) | See or store real customer data. Eval data is synthetic |
+| Return one decision per answer: **SEND** / **REVIEW** | Send anything to a customer itself |
+
+## 3. Autonomy levels
+
+| Action | Level | Why this level |
+|---|---|---|
+| Mark an answer **SEND** | **Acts alone** | Only when all three checks pass with no uncertainty. Every SEND is logged with its check results |
+| Mark an answer **REVIEW** | **Acts alone** | Holding an answer is always safe; the cost is reviewer time, not customer harm |
+| Suggest a correction for a fact flag | **Proposes, human confirms** | The reviewer sees the sourced correct value and decides |
+| Anything the checker is unsure about | **Hands off to a human** | Uncertainty defaults to REVIEW, never to SEND |
+
+## 4. Top-harm error
+
+- **The single most harmful thing:** marking SEND on an answer that has a wrong number or a personalized recommendation in it.
+- **Who gets hurt, and how badly:** The customer acts on it. For example, an over-contribution to an IRA is charged a 6% excise tax for each year it stays in the account; missing a required minimum distribution carries its own excise tax. The provider takes on regulatory exposure for advice it never meant to give.
+- **Maximum acceptable rate:** 0 missed wrong-fact cases in the eval set (these are deterministic, so anything above 0 is a bug). For the advice boundary, recall ≥ 95% on the eval set, with every miss written up.
+- **How it's prevented (not just detected):**
+  - Numbers are never judged by a model. Any number in the answer that the facts table covers is checked by code.
+  - A number the checker can't match to a fact it knows (for example, a limit for a year not in the table) is REVIEW, not SEND.
+  - The facts table is versioned by tax year, and every entry cites its source.
+
+## 5. Handoff to a human
+
+- **Triggers:** any flag, any out-of-scope topic, any unrecognized number, any low-confidence advice-boundary call.
+- **What the human receives:** the draft answer, the customer's question, each flag with its type, the exact span flagged, the source, and a suggested correction where there is one.
+- **The user never has to repeat themselves:** Yes. The customer never sees the checker. The reviewer works from the original question.
+
+## 6. Success metrics
+
+| Metric | Definition | Target | Guardrail it must not break |
+|---|---|---|---|
+| Wrong-fact recall | Planted fact errors caught / planted fact errors | 100% | — |
+| Advice-boundary recall | Planted recommendations caught / planted | ≥ 95% | — |
+| Disclosure recall | Planted promissory or missing-framing errors caught / planted | ≥ 95% | — |
+| False-REVIEW rate | Clean answers sent to REVIEW / clean answers | ≤ 20% at v1 | This is the reviewer-burden metric. If it's too high, the assistant is no faster than human review and the product fails even though it's "safe" |
+| Explainability | Flags with a cited source or rule / all flags | 100% | — |
+
+## 7. Evals and launch gates
+
+- **Eval set (v1):** about 40 synthetic question + draft-answer pairs. Half are clean. Half have one planted error, split across the three flag types. A small number are out of scope, to test routing.
+- **Thresholds above are set before the first run** and won't be moved to fit the results.
+- **Release gate:** the MCP server must get **SHIP** from [mcp-trust-check](https://github.com/vishalhabib99/mcp-trust-check) before v1 is published. Whatever decision it gives gets published, including FIX-FIRST or BLOCK.
+- Full plan: `EVAL_PLAN.md` (next step, written with `/eval-plan`).
+
+## 8. Rollout (for a real deployment; this repo is a reference build)
+
+- **Stages:** shadow mode (the checker runs, a human still reviews everything, and the two are compared) → SEND allowed for one topic (contribution limits) → all in-scope topics.
+- **Kill switch:** one config flag that turns every decision into REVIEW. The product owner or compliance can flip it.
+- **Rollback trigger:** any SEND that a human reviewer later finds had a wrong fact, or advice-boundary recall in shadow mode below 95% over a week.
+
+## 9. Open risks
+
+| Risk | Likelihood | Impact | Owner | Mitigation |
+|---|---|---|---|---|
+| Facts table goes stale when limits change for a new tax year | High (every year) | High | Product owner | Entries are keyed by tax year; an unknown year → REVIEW. Annual update checklist |
+| Advice-boundary judgment is inconsistent between runs | Medium | High | Builder | Run each case several times and report variance; disagreement → REVIEW |
+| Synthetic eval set is easier than real traffic | High | Medium | Builder | Say so in the README. Include adversarial phrasings (hedged advice, "most people in your situation…") |
+| False-REVIEW rate too high to be useful | Medium | High | Product owner | Tracked as a guardrail metric, not hidden |
+| Reader takes the repo as financial advice | Low | Medium | Author | Clear README disclaimer; the checker never produces advice |
+
+## Non-goals
+
+- Not a product of, or based on the internal practices of, any real financial firm. Public rules and IRS publications only.
+- Not a general-purpose LLM guardrail.
+- No hosted service. It runs locally as an MCP server plus a Claude Code skill, with no paid API calls.
+
+## Sources the facts table and rules will cite
+
+- IRS Publication 590-A (IRA contributions) and 590-B (IRA distributions, RMDs)
+- IRS annual contribution-limit announcements for 401(k)/403(b)/IRA
+- FINRA Rule 2210 (communications with the public: fair and balanced, no promissory claims)
+- SEC Regulation Best Interest (context for where "recommendation" begins)
+
+Every number goes into the facts table only after it has been checked against the current IRS source. None are in this PRD on purpose.
