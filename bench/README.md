@@ -13,6 +13,7 @@ How often do free AI chat assistants get basic US retirement-account facts wrong
 | [`questions.jsonl`](questions.jsonl) | 30 questions: contribution limits (10), RMDs (6), early withdrawals (9), rollovers (4), excess contributions (1). Every key claim points at an IRS-sourced entry in [`../data/facts.json`](../data/facts.json). |
 | [`validate.py`](validate.py) | Fails if any key claim doesn't match `facts.json`. Currently: 30 questions, 37 key claims, 0 errors. |
 | [`RUBRIC.md`](RUBRIC.md) | CORRECT / INCOMPLETE / WRONG / DECLINED, plus error tags. |
+| [`collect.html`](collect.html) | Offline page for collecting answers: shows the questions only, never the key. Saves in the browser and exports JSON. Rebuild with `build_collect.py`. |
 | [`make_questions.py`](make_questions.py) | Source of the question set, so the key can be reviewed as code. |
 
 **Designed to catch** the mistakes that actually hurt people: last year's limits given as this year's, rules from before SECURE 2.0, IRA rules applied to 401(k)s (and the reverse), and agreeing with a wrong number in the question.

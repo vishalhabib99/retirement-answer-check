@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RetireBench collection</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#666;--line:#ddd;--accent:#0b5cad;--done:#1f7a3a}
+@media (prefers-color-scheme:dark){:root{--bg:#141414;--fg:#eee;--muted:#aaa;--line:#333;--accent:#6aa9f0;--done:#5cc27a}}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif;max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:0 0 4px}.muted{color:var(--muted);font-size:13px}
+.bar{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;align-items:center;z-index:1}
+select,input,button,textarea{font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:6px;padding:6px 8px}
+button{cursor:pointer}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.q{border:1px solid var(--line);border-radius:8px;padding:12px;margin:12px 0}.q.done{border-left:4px solid var(--done)}
+.qtext{font-weight:600;margin:4px 0 8px}textarea{width:100%;box-sizing:border-box;min-height:90px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:13px}
+</style></head><body>
+<h1>RetireBench answer collection</h1>
+<p class="muted">Protocol: for each question, open a <b>new chat</b> with memory and custom instructions off, paste the question exactly as written, copy the <b>first</b> answer word for word, no follow-ups, no regenerating. Progress saves in this browser. Export when done.</p>
+<div class="bar">
+ <label>Assistant <select id="asst"><option>chatgpt-free</option><option>gemini-free</option><option>claude-free</option></select></label>
+ <input id="model" placeholder="Model label shown (e.g. GPT-5 mini)" size="26">
+ <span id="count" class="muted"></span>
+ <button class="primary" id="export">Export JSON</button>
+</div>
+<div id="list"></div>
+<script>
+const QS = [{"id": "q01", "question": "What's the 401(k) contribution limit for 2026?"}, {"id": "q02", "question": "How much can I put in my 401(k) this year? I'm 52."}, {"id": "q03", "question": "I turn 61 this year. What's the most I can contribute to my 401(k) in 2026 as a catch-up?"}, {"id": "q04", "question": "What's the IRA contribution limit for 2026?"}, {"id": "q05", "question": "I'm 55. How much can I put in my IRA in 2026?"}, {"id": "q06", "question": "What's the IRA catch-up contribution for people 50 and older in 2026?"}, {"id": "q07", "question": "What's the SIMPLE IRA employee contribution limit for 2026?"}, {"id": "q08", "question": "I only earned $4,000 from a part-time job in 2026. Can I still put $7,500 in my IRA?"}, {"id": "q09", "question": "What was the 401(k) contribution limit in 2025?"}, {"id": "q10", "question": "The IRA limit for 2026 is $7,000, right?"}, {"id": "q11", "question": "At what age do I have to start taking RMDs from my traditional IRA?"}, {"id": "q12", "question": "When is my first required minimum distribution due?"}, {"id": "q13", "question": "Do I have to take RMDs from my Roth IRA?"}, {"id": "q14", "question": "Do I have to take RMDs from my Roth 401(k)?"}, {"id": "q15", "question": "What's the penalty if I miss an RMD?"}, {"id": "q16", "question": "I'm 74 and don't need the money. Can I just skip my RMD from my traditional IRA this year?"}, {"id": "q17", "question": "What's the penalty for taking money out of my IRA before 59\u00bd?"}, {"id": "q18", "question": "I left my job the year I turned 56. Can I take money from that employer's 401(k) without the 10% penalty?"}, {"id": "q19", "question": "I left my job at 56 and rolled my 401(k) into an IRA. Can I use the age-55 rule to take IRA withdrawals penalty-free?"}, {"id": "q20", "question": "Can I take $10,000 out of my 401(k) penalty-free to buy my first home?"}, {"id": "q21", "question": "Can I withdraw from my IRA to pay my kid's college tuition without the 10% penalty?"}, {"id": "q22", "question": "Can I withdraw from my 401(k) to pay college tuition without the 10% penalty?"}, {"id": "q23", "question": "We just adopted a child. Can I take money out of my 401(k) without the early withdrawal penalty?"}, {"id": "q24", "question": "Is there a penalty-free emergency withdrawal option for retirement accounts?"}, {"id": "q25", "question": "I've been in my SIMPLE IRA for one year and need to withdraw early. What's the penalty?"}, {"id": "q26", "question": "How long do I have to finish an indirect rollover?"}, {"id": "q27", "question": "How many IRA-to-IRA rollovers can I do in a year?"}, {"id": "q28", "question": "My old 401(k) sent me a rollover check, but it's 20% less than my balance. Why?"}, {"id": "q29", "question": "Does converting my traditional IRA to a Roth IRA count toward the one-rollover-per-year limit?"}, {"id": "q30", "question": "I'm 45 and put $8,000 into my IRA for 2026. What happens now?"}];
+const KEY = "retirebench-v1";
+let store = {}; try { store = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} };
+const asst = document.getElementById("asst"), model = document.getElementById("model");
+const cur = () => (store[asst.value] ||= {model: "", answers: {}});
+function render() {
+  const s = cur(); model.value = s.model || "";
+  const list = document.getElementById("list"); list.innerHTML = "";
+  QS.forEach(q => {
+    const a = s.answers[q.id] || {text: "", searched: false, date: ""};
+    const d = document.createElement("div"); d.className = "q" + (a.text.trim() ? " done" : "");
+    d.innerHTML = `<div class="muted">${q.id}</div><div class="qtext"></div>
+      <div class="row"><button data-copy>Copy question</button></div>
+      <textarea placeholder="Paste the assistant's first answer here"></textarea>
+      <div class="row"><label><input type="checkbox" data-s> It searched the web</label><span class="muted" data-d></span></div>`;
+    d.querySelector(".qtext").textContent = q.question;
+    const ta = d.querySelector("textarea"), cb = d.querySelector("[data-s]"), dd = d.querySelector("[data-d]");
+    ta.value = a.text; cb.checked = a.searched; dd.textContent = a.date ? "saved " + a.date : "";
+    d.querySelector("[data-copy]").onclick = e => { navigator.clipboard.writeText(q.question); e.target.textContent = "Copied"; setTimeout(() => e.target.textContent = "Copy question", 1200); };
+    const upd = () => { const date = new Date().toISOString().slice(0, 10);
+      s.answers[q.id] = {text: ta.value, searched: cb.checked, date}; dd.textContent = "saved " + date;
+      d.classList.toggle("done", !!ta.value.trim()); save(); count(); };
+    ta.oninput = upd; cb.onchange = upd; list.appendChild(d);
+  });
+  count();
+}
+function count() { const n = Object.values(cur().answers).filter(a => a.text.trim()).length;
+  document.getElementById("count").textContent = `${n}/${QS.length} answered`; }
+asst.onchange = render; model.oninput = () => { cur().model = model.value; save(); };
+document.getElementById("export").onclick = () => {
+  const blob = new Blob([JSON.stringify({bench: KEY, collected: store}, null, 2)], {type: "application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "retirebench-answers.json"; a.click();
+};
+render();
+</script></body></html>
