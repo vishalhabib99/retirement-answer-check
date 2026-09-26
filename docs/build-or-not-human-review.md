@@ -56,3 +56,26 @@ Selection rule: the best-known human-review features in each category that an AI
 **New sample (none from round 1):** 5 LLM-output review features: W&B Weave (human feedback), Comet Opik (annotation queues), MLflow / Databricks (review app / labeling sessions), Argilla (Hugging Face), Datadog LLM Observability (annotation queues). Selection rule: the other well-known LLM-eval and LLM-observability products with a human-review feature, named before reading their docs.
 
 **Bar:** hit = official docs show no known-answer/gold reviewer scoring for LLM-output review. Agreement-only features still count as a hit here, since agreement between two reviewers who both rubber-stamp says nothing about catching errors. **Build if ≥ 3 of 5 hits. Don't build if ≤ 2.** No further narrowing after this round.
+
+## Round 2 results (checked 2026-09-26)
+
+| # | Tool | Result | Evidence |
+|---|---|---|---|
+| 1 | W&B Weave | **Hit** | [Docs](https://docs.wandb.ai/weave/guides/tracking/feedback): human-annotation scorers and queues; nothing on scoring reviewers against known answers or agreement. |
+| 2 | Comet Opik | **Hit** | [Docs](https://www.comet.com/docs/opik/evaluation/annotation_queues): multiple reviewers can score the same trace; no reviewer-quality measurement. |
+| 3 | MLflow / Databricks | **Hit** | [Docs](https://docs.databricks.com/aws/en/mlflow3/genai/human-feedback/concepts/labeling-sessions): labeling sessions and review app; nothing on reviewer accuracy or agreement. |
+| 4 | Datadog LLM Observability | **Hit** | [Docs](https://docs.datadoghq.com/llm_observability/evaluations/annotation_queues/): "the value for each label is aggregated across them by consensus". Consensus only, which the bar counts as a hit. |
+| 5 | Argilla | Miss | [v1 docs](https://docs.v1.argilla.io/en/latest/reference/python/python_annotation_metrics.html): a metric mode "where suggestions are the ground truths and the responses are compared against them", per annotator. These are legacy v1 docs, and I couldn't confirm it in 2.x. Counted as present, the conservative call. |
+
+**Result:** 4 of 5 hits. Clears the pre-set bar (≥ 3).
+**Decision: Build**, narrowed.
+**Why, in one sentence:** people who review AI output measurably miss its errors, and 7 of the 10 review tools that could be checked across both rounds give no way to test whether reviewers catch them. The general labeling tools that do (Label Studio Enterprise, Argilla v1) aren't where production LLM answers get reviewed.
+
+**Smallest version to build:** a review queue for retirement-answer-check that mixes in **known-answer items**, cases whose correct verdict is already known, drawn from the existing 83 labeled eval cases. It reports, per reviewer:
+- the catch rate on known-bad answers (rubber-stamping shows up here),
+- the false-reject rate on known-good answers,
+- time per item.
+
+**First test cases:** the 83 cases in `evals/`, already labeled.
+**Honest limit:** the tool can be built and tested here, but whether it changes reviewer behavior needs real reviewers. The plan is 2–3 people from the outreach, with results reported as-is.
+**What would reopen this:** evidence that LangSmith, Langfuse, Phoenix, Weave, Opik, MLflow or Datadog ship known-answer reviewer scoring, or that teams already run this in-house as standard practice.
