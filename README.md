@@ -73,6 +73,14 @@ The 2 false REVIEWs were true statements the facts table doesn't cover (benefici
 
 Raw outputs: [`evals/`](evals/) (cases, first-run logs, all judge runs).
 
+## Model risk pack
+
+**[How this would be governed at a regulated firm](docs/model-risk/README.md)**, written the way a model risk team would review it: [inventory](docs/model-risk/inventory.md), [model card](docs/model-risk/model-card.md), [validation report](docs/model-risk/validation-report.md) and [monitoring plan](docs/model-risk/monitoring-plan.md).
+
+It follows the April 2026 replacement for SR 11-7 ([SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm)), which puts generative AI **out of scope**. So the LLM judges are governed under NIST AI 600-1 instead.
+
+**Verdict: approved for shadow mode only.** Three High findings block customer-facing SEND: no independent validation, no real-traffic evidence, and no prompt-injection testing.
+
 ## Human review queue: is the review itself working?
 
 Every REVIEW goes to a person. But people reviewing AI output measurably miss its errors: consultants using GPT-4 were [19 percentage points less likely to be right](https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf) on a task outside what it handles well, and the EU AI Act ([Art. 14(4)(b)](https://artificialintelligenceact.eu/article/14/)) names automation bias outright. Of 10 LLM review tools checked, 7 give no way to test whether reviewers catch errors ([decision record](docs/build-or-not-human-review.md)).

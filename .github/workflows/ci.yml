@@ -25,3 +25,22 @@ jobs:
           path: .
           run: "retirement-answer-check"
           fail-on: block
+  package:
+    # Installs the built wheel the way users do (not editable), from outside the repo,
+    # so a file missing from the package fails here instead of on a user's machine.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build && python -m build --wheel --outdir /tmp/dist
+      - run: python -m venv /tmp/v && /tmp/v/bin/pip install /tmp/dist/*.whl
+      - working-directory: /tmp
+        run: |
+          /tmp/v/bin/python -c "
+          from retirement_answer_check import check
+          from retirement_answer_check.room import contribution_room
+          assert check('What is the 2026 IRA limit?', 'It is \$7,500.')['decision'] == 'SEND'
+          assert contribution_room(40, 90000)['lines'][0]['amount'] == 7500
+          print('installed package OK')"
