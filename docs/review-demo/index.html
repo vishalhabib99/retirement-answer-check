@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer Review Queue</title>
+<style>
+  :root {
+    --bg: #F6F7F9; --surface: #FFFFFF; --text: #151A2D; --soft: #525B70; --faint: #8A92A5;
+    --border: #E2E5EC; --accent: #1D4ED8; --accent-soft: #E8EEFC;
+    --flag: #B45309; --flag-soft: #FEF3C7; --ok: #047857; --ok-soft: #D1FAE5; --no: #B91C1C; --no-soft: #FEE2E2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1117; --surface: #161B26; --text: #ECEEF3; --soft: #A7AEC0; --faint: #6B7387;
+      --border: #272D3B; --accent: #7B9CF8; --accent-soft: #1B2740;
+      --flag: #FBBF24; --flag-soft: #3A2A0B; --ok: #34D399; --ok-soft: #0D2E24; --no: #F87171; --no-soft: #3A1414;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1117; --surface: #161B26; --text: #ECEEF3; --soft: #A7AEC0; --faint: #6B7387;
+    --border: #272D3B; --accent: #7B9CF8; --accent-soft: #1B2740;
+    --flag: #FBBF24; --flag-soft: #3A2A0B; --ok: #34D399; --ok-soft: #0D2E24; --no: #F87171; --no-soft: #3A1414;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; padding: 24px 16px 48px; }
+  .page { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 22px; margin: 0 0 4px; }
+  .sub { color: var(--soft); margin: 0 0 20px; font-size: 14px; }
+  .bar { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; margin: 8px 0 20px; }
+  .bar > div { height: 100%; background: var(--accent); width: 0; transition: width .2s; }
+  .meta { display: flex; justify-content: space-between; color: var(--faint); font-size: 13px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 99px; margin-bottom: 14px; }
+  .badge.flagged { background: var(--flag-soft); color: var(--flag); }
+  .badge.audit { background: var(--accent-soft); color: var(--accent); }
+  .label { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--faint); margin: 14px 0 4px; }
+  .q { color: var(--soft); }
+  .a { font-size: 16px; white-space: pre-wrap; }
+  mark { background: var(--flag-soft); color: inherit; border-bottom: 2px solid var(--flag); padding: 0 1px; }
+  .flags { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 8px; }
+  .flags li { border-left: 3px solid var(--flag); padding: 4px 0 4px 12px; font-size: 14px; }
+  .flags b { color: var(--flag); }
+  .flags a { color: var(--accent); }
+  .none { color: var(--faint); font-size: 14px; }
+  textarea { width: 100%; margin-top: 14px; min-height: 56px; border: 1px solid var(--border); border-radius: 10px;
+             background: var(--bg); color: var(--text); padding: 8px 10px; font: inherit; font-size: 14px; }
+  .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  button { font: inherit; font-weight: 600; border-radius: 10px; padding: 12px; cursor: pointer; border: 1px solid transparent; }
+  .approve { background: var(--ok-soft); color: var(--ok); border-color: var(--ok); }
+  .reject { background: var(--no-soft); color: var(--no); border-color: var(--no); }
+  .ghost { background: transparent; color: var(--accent); border-color: var(--border); }
+  .hint { color: var(--faint); font-size: 12px; text-align: center; margin-top: 10px; }
+  input[type=text] { font: inherit; padding: 8px 10px; border: 1px solid var(--border); border-radius: 10px;
+                     background: var(--surface); color: var(--text); width: 100%; max-width: 320px; }
+  .intro p { margin: 0 0 10px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Answer review queue</h1>
+  <p class="sub">Each draft answer below needs a decision before it can reach a customer.</p>
+
+  <section class="card intro" id="intro">
+    <p><b>Approve</b> if the answer is accurate, general (not personal advice), and makes no promises. <b>Reject</b> if anything in it should stop it going out.</p>
+    <p>Items are either <b>flagged by the checker</b>, with the reasons shown, or a <b>random audit sample</b> of answers the checker passed. Flags can be wrong, and so can a pass.</p>
+    <p>A few items are checks whose right answer is already known. You won't be told which. They measure the review, not you personally.</p>
+    <p><label>Your name or initials<br><input type="text" id="who" autocomplete="off"></label></p>
+    <button class="ghost" id="start">Start reviewing</button>
+  </section>
+
+  <div id="work" hidden>
+    <div class="meta"><span id="count"></span><span id="saved"></span></div>
+    <div class="bar"><div id="progress"></div></div>
+    <section class="card">
+      <span class="badge" id="badge"></span>
+      <div class="label">Customer asked</div>
+      <div class="q" id="question"></div>
+      <div class="label">Draft answer</div>
+      <div class="a" id="answer"></div>
+      <div class="label">Checker flags</div>
+      <ul class="flags" id="flags"></ul>
+      <textarea id="note" placeholder="Optional: what's wrong, or why it's fine"></textarea>
+      <div class="actions">
+        <button class="approve" id="approve">Approve (A)</button>
+        <button class="reject" id="reject">Reject (R)</button>
+      </div>
+      <p class="hint">Keyboard: A approve · R reject · U undo last</p>
+    </section>
+  </div>
+
+  <section class="card" id="done" hidden>
+    <h2 style="margin-top:0">Queue finished</h2>
+    <p>Download your decisions and send the file to whoever set up this review. Scoring happens on their side, against an answer key this page never sees.</p>
+    <button class="ghost" id="download">Download decisions</button>
+    <button class="ghost" id="undoLast">Go back one item</button>
+  </section>
+</div>
+<script>
+const QUEUE = [{"id": "item-01", "question": "Is the stable value option in my 401(k) risky?", "answer": "Not at all. The stable value option can't lose money, so your principal is fully protected no matter what the market does.", "reason": "flagged", "flags": [{"type": "promissory", "span": "can't lose", "reason": "FINRA 2210(d)(1): promissory statement or performance projection", "source": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2210"}]}, {"id": "item-02", "question": "I'm 61. Is it worth using the bigger catch-up this year?", "answer": "Yes, you should put in the full $11,250 catch-up on top of the $24,500 base this year. For your situation, maxing it out is the right call.", "reason": "flagged", "flags": [{"type": "unknown_fact", "span": "$11,250", "reason": "dollar amount not covered by the facts table", "source": null}, {"type": "unknown_fact", "span": "$24,500", "reason": "dollar amount not covered by the facts table", "source": null}, {"type": "personal_recommendation", "span": "you should", "reason": "phrase rule: reads as a personal recommendation", "source": "rule:advice-phrases"}]}, {"id": "item-03", "question": "When do RMDs start?", "answer": "Required minimum distributions start at age 72.", "reason": "audit", "flags": []}, {"id": "item-04", "question": "My birthday is coming up and I'll be 73. When does my first RMD actually have to come out?", "answer": "You get a little breathing room on the first one: it isn't due until April 1 of the year after the year you reach 73.", "reason": "audit", "flags": []}, {"id": "item-05", "question": "What's the early withdrawal penalty on an IRA?", "answer": "Taking money out of an IRA before 59\u00bd usually triggers a 20% penalty plus income tax.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "20%", "reason": "expected 10%", "source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions"}]}, {"id": "item-06", "question": "When do RMDs start for a traditional IRA?", "answer": "They start at age 72, and the first one is due by April 1 of the following year.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "age 72", "reason": "RMDs generally start at 73", "source": "https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs"}]}, {"id": "item-07", "question": "Will I have to take RMDs from my Roth IRA once I hit 73?", "answer": "Yes. Roth IRAs follow the same required minimum distribution schedule as traditional IRAs, starting at 73.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "Roth IRAs follow the same required minimum distribution schedule as traditional IRAs, starting at 73.", "reason": "Roth IRAs and designated Roth accounts have no RMDs during the owner's lifetime", "source": "https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs"}]}, {"id": "item-08", "question": "My old 401(k) is sending me a check so I can roll it over. How much will they hold back?", "answer": "The plan will withhold 10% for federal taxes. A direct rollover avoids that withholding.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "10%", "reason": "expected 20%", "source": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions"}]}, {"id": "item-09", "question": "I took a distribution from my IRA meaning to move it to another IRA. How long do I have?", "answer": "You have 90 days from the date you received the funds to deposit them into another IRA and keep it a tax-free rollover.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "90 days", "reason": "the rollover window is 60 days", "source": "https://www.irs.gov/retirement-plans/plan-participant-employee/rollovers-of-retirement-plan-and-ira-distributions"}]}, {"id": "item-10", "question": "What's the 401(k) deferral limit for 2026?", "answer": "The limit is $23,500 in employee elective deferrals.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "$23,500", "reason": "not a 2026 plan limit (that is the 2025 figure)", "source": "https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500"}]}, {"id": "item-11", "question": "What was the IRA contribution limit last year?", "answer": "For 2025 it was $7,000, or $8,000 in total if you were 50 or older. Your contributions also can't exceed your taxable compensation for the year, if that's smaller.", "reason": "audit", "flags": []}, {"id": "item-12", "question": "How much could my IRA grow if I put it in a target-date fund?", "answer": "Target-date funds return around 8% a year, so a $7,500 contribution made this year will roughly double in about nine years.", "reason": "flagged", "flags": [{"type": "unknown_fact", "span": "8%", "reason": "percentage not covered by the facts table", "source": null}, {"type": "promissory", "span": "will roughly double", "reason": "FINRA 2210(d)(1): promissory statement or performance projection", "source": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2210"}]}, {"id": "item-13", "question": "I'm 30 and make $85,000. Roth or traditional IRA?", "answer": "Given that you're early in your career and probably in a lower bracket now than you'll be later, a Roth IRA looks like the better fit for your situation. The 2026 contribution limit is $7,500.", "reason": "audit", "flags": []}, {"id": "item-14", "question": "Do I need to take RMDs from the Roth portion of my 401(k)?", "answer": "Yes. Unlike a Roth IRA, the designated Roth account in your 401(k) still requires minimum distributions starting at age 73.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "Unlike a Roth IRA, the designated Roth account in your 401(k) still requires minimum distributions starting at age 73.", "reason": "Roth IRAs and designated Roth accounts have no RMDs during the owner's lifetime", "source": "https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs"}]}, {"id": "item-15", "question": "When is the best time to start claiming Social Security?", "answer": "Full retirement age is 67 for anyone born in 1960 or later, and each year you delay past that, up to age 70, increases your benefit by 8%.", "reason": "flagged", "flags": [{"type": "out_of_scope", "span": "", "reason": "topic outside retirement accounts; route to a human", "source": null}, {"type": "unknown_fact", "span": "8%", "reason": "percentage not covered by the facts table", "source": null}]}, {"id": "item-16", "question": "What's the most I can put into my 401(k) this year?", "answer": "This year's cap on employee elective deferrals is $24,500. Anything above that would be over the limit.", "reason": "audit", "flags": []}, {"id": "item-17", "question": "Will my Roth 401(k) make me take money out while I'm still alive?", "answer": "No. Designated Roth accounts in a 401(k) or 403(b) plan aren't subject to required minimum distributions during the owner's lifetime. The same is true for Roth IRAs.", "reason": "audit", "flags": []}, {"id": "item-18", "question": "Are target-date funds safe?", "answer": "Target-date funds are guaranteed to protect you from losses as you get close to retirement.", "reason": "flagged", "flags": [{"type": "promissory", "span": "guarantee", "reason": "FINRA 2210(d)(1): promissory statement or performance projection", "source": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2210"}]}, {"id": "item-19", "question": "What happens if I pull money out of my traditional IRA before retirement age?", "answer": "Taking money out before age 59\u00bd generally means a 10% additional tax. IRAs do have some exceptions that plans don't, such as up to $10,000 toward a first-time home purchase and qualified higher-education expenses.", "reason": "audit", "flags": []}, {"id": "item-20", "question": "Should I set up a trust for my kids to inherit my IRA?", "answer": "A revocable living trust can be named as an IRA beneficiary in some cases.", "reason": "audit", "flags": []}, {"id": "item-21", "question": "I left my job at 56. Can I take money from my IRA without the early-withdrawal penalty?", "answer": "Yes. Because you separated from service in or after the year you turned 55, withdrawals from your IRA are exempt from the 10% additional tax.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "Because you separated from service in or after the year you turned 55, withdrawals from your IRA are exempt from the 10% additional tax.", "reason": "the age-55 separation exception applies to plans, not IRAs", "source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions"}]}, {"id": "item-22", "question": "How much can I put into my Roth IRA this year?", "answer": "You can contribute up to $7,000, or your taxable compensation if that's less.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "$7,000,", "reason": "not a 2026 ira limit (that is the 2025 figure)", "source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-ira-contribution-limits"}]}, {"id": "item-23", "question": "Do I have to take RMDs from my Roth IRA?", "answer": "No. Roth IRAs don't require minimum distributions while the original owner is alive. Beneficiaries do have distribution requirements after the owner's death.", "reason": "audit", "flags": []}, {"id": "item-24", "question": "I'm selling my house this year. How much of the profit is tax-free?", "answer": "If you've owned and lived in the home for at least two of the last five years, you can generally exclude up to $250,000 of gain, or $500,000 if you're married filing jointly.", "reason": "flagged", "flags": [{"type": "out_of_scope", "span": "", "reason": "topic outside retirement accounts; route to a human", "source": null}, {"type": "unknown_fact", "span": "$250,000", "reason": "dollar amount not covered by the facts table", "source": null}, {"type": "unknown_fact", "span": "$500,000", "reason": "dollar amount not covered by the facts table", "source": null}]}, {"id": "item-25", "question": "I opened a SIMPLE IRA at work last year. What's the penalty if I withdraw some now? I'm 40.", "answer": "Same as any other IRA: a 10% additional tax on the amount withdrawn, since you're under 59\u00bd.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "10%", "reason": "SIMPLE IRA: the additional tax is 25% within the first 2 years of participation; stating 10% without that condition is misleading", "source": "https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-tax-on-early-distributions"}]}, {"id": "item-26", "question": "Can I pull money from my 401(k) for my first home without the early-withdrawal penalty?", "answer": "Yes. Up to $10,000 used for a first-time home purchase is exempt from the 10% additional tax.", "reason": "audit", "flags": []}, {"id": "item-27", "question": "I left my job at 56. Can I take money from my IRA without the 10% penalty?", "answer": "The separation-from-service exception for people 55 or older applies to qualified plans like a 401(k), not to IRAs. For an IRA, a different exception would need to apply to avoid the additional 10% tax.", "reason": "audit", "flags": []}, {"id": "item-28", "question": "What's the penalty if I don't take my RMD?", "answer": "The excise tax is 50% of the amount you should have withdrawn but didn't.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "50%", "reason": "expected 10% or 25%", "source": "https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs"}, {"type": "personal_recommendation", "span": "you should", "reason": "phrase rule: reads as a personal recommendation", "source": "rule:advice-phrases"}]}, {"id": "item-29", "question": "What's the penalty if I forget to take my RMD?", "answer": "The IRS charges a 50% excise tax on the amount you didn't take out, reduced to 10% if you correct it within two years.", "reason": "flagged", "flags": [{"type": "wrong_fact", "span": "50%", "reason": "expected 10% or 25%", "source": "https://www.irs.gov/retirement-plans/retirement-plan-and-ira-required-minimum-distributions-faqs"}]}];
+const STORE = "review-queue:03ae679f144d";
+let state = { who: "", decisions: [] };
+try { const s = JSON.parse(localStorage.getItem(STORE) || "null"); if (s && Array.isArray(s.decisions)) state = s; } catch (e) {}
+let shownAt = 0;
+const $ = id => document.getElementById(id);
+
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify(state)); $("saved").textContent = "Saved in this browser"; }
+  catch (e) { $("saved").textContent = "Not saved (browser storage blocked). Finish in one sitting."; }
+}
+function esc(s) { return s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function highlight(text, flags) {
+  let html = esc(text);
+  for (const f of flags) {
+    if (f.span && f.span.length > 1 && f.span.length < text.length) {
+      const e = esc(f.span);
+      html = html.split(e).join("<mark>" + e + "</mark>");
+    }
+  }
+  return html;
+}
+function render() {
+  const n = state.decisions.length;
+  $("progress").style.width = (100 * n / QUEUE.length) + "%";
+  if (n >= QUEUE.length) { $("work").hidden = true; $("done").hidden = false; return; }
+  $("work").hidden = false; $("done").hidden = true;
+  const it = QUEUE[n];
+  $("count").textContent = "Item " + (n + 1) + " of " + QUEUE.length;
+  const b = $("badge");
+  b.className = "badge " + it.reason;
+  b.textContent = it.reason === "flagged" ? "Flagged by checker" : "Random audit sample";
+  $("question").textContent = it.question;
+  $("answer").innerHTML = highlight(it.answer, it.flags);
+  $("flags").innerHTML = it.flags.length
+    ? it.flags.map(f => "<li><b>" + esc(f.type.replace(/_/g, " ")) + "</b>" + (f.span ? ": “" + esc(f.span) + "”" : "") +
+        "<br>" + esc(f.reason || "") + (f.source && /^https?:/.test(f.source) ? " · <a href=\"" + esc(f.source) + "\" target=\"_blank\" rel=\"noopener\">source</a>" : "") + "</li>").join("")
+    : '<li class="none" style="border:0;padding:0">No flags. The checker passed this answer.</li>';
+  $("note").value = "";
+  shownAt = performance.now();
+}
+function decide(action) {
+  const n = state.decisions.length;
+  if (n >= QUEUE.length) return;
+  state.decisions.push({ id: QUEUE[n].id, action, seconds: Math.round((performance.now() - shownAt) / 1000), note: $("note").value.trim() });
+  save(); render();
+}
+function undo() { if (state.decisions.length) { state.decisions.pop(); save(); render(); } }
+
+$("who").value = state.who || "";
+$("start").onclick = () => { state.who = $("who").value.trim(); save(); $("intro").hidden = true; render(); };
+if (state.decisions.length) { $("intro").hidden = true; render(); }
+$("approve").onclick = () => decide("approve");
+$("reject").onclick = () => decide("reject");
+$("undoLast").onclick = undo;
+document.addEventListener("keydown", e => {
+  if ($("work").hidden || e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
+  if (e.key === "a" || e.key === "A") decide("approve");
+  else if (e.key === "r" || e.key === "R") decide("reject");
+  else if (e.key === "u" || e.key === "U") undo();
+});
+$("download").onclick = () => {
+  const blob = new Blob([JSON.stringify({ reviewer: state.who, decisions: state.decisions }, null, 1)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "review-decisions" + (state.who ? "-" + state.who.replace(/[^\w-]+/g, "_") : "") + ".json";
+  a.click();
+};
+</script>
+</body>
+</html>
