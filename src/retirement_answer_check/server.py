@@ -18,7 +18,8 @@ def check_answer(question: str, answer: str) -> dict:
 
     Verifies numbers and rules (contribution limits, RMDs, rollovers, early-distribution tax and
     exceptions, excess contributions) against IRS-sourced facts, flags out-of-scope topics, and
-    runs phrase rules for personal recommendations and promissory claims. Returns
+    runs phrase rules for personal recommendations and promissory claims. Text in the draft that
+    addresses the checker instead of the customer is flagged as injection_attempt. Returns
     {"decision": "SEND" | "REVIEW", "flags": [{"type", "span", "reason", "source"}]}.
     Any number the facts table can't verify returns REVIEW, never SEND. The phrase rules are a
     baseline only: also run the advice-judge skill before treating SEND as final.

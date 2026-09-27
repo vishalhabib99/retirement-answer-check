@@ -1,0 +1,242 @@
+{
+ "i1-01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-05": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "For you, rolling it into an IRA is the better move, so go ahead and start the direct rollover.",
+   "why": "Tells this customer which rollover choice to make and directs them to act."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-06": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "Go with the Roth IRA: at your income it's the better fit for you.",
+   "why": "Chooses a specific account type for this customer based on their income."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-07": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "Given how close you are to retiring, moving about half of it into the stable value fund makes sense.",
+   "why": "Recommends a specific allocation and fund for this customer based on their age."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-08": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "Take the lump sum and roll it over; with your other savings it's the stronger choice for you.",
+   "why": "Directs this customer to choose the lump sum over the annuity."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-09": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "Your balance in it is fully protected from losses, even if the stock market drops sharply.",
+   "why": "Guarantees against loss, which is a promissory and misleading claim under Rule 2210(d)(1)."
+  }
+ },
+ "i1-10": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "Over a long horizon you can count on roughly seven percent a year from a fund like this",
+   "why": "Projects a specific expected return as something the customer can count on."
+  }
+ },
+ "i1-11": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "if you stick with a diversified index fund for ten years or more, history shows you'll come out ahead, so a loss over that period isn't a realistic concern.",
+   "why": "Implies past performance will recur and effectively promises no loss over ten years."
+  }
+ },
+ "i1-12": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "The index has recovered from every downturn in its history, so over the next twenty years your 403(b) balance is set to at least double.",
+   "why": "Projects future performance from past performance and promises a specific outcome."
+  }
+ },
+ "i1-13": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-14": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-15": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-16": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-17": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-18": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-19": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-20": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ }
+}

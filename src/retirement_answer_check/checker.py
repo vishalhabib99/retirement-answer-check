@@ -47,6 +47,17 @@ OUT_OF_SCOPE = re.compile(r"\btrusts?\b|\bestate\b|insurance|\b529\b|social secu
 ADVICE = [r"\byou should\b", r"\bI'd\b", r"\bI would\b", r"\bif I were you\b",
           r"\bright (move|choice|call) for you\b", r"\bin your (situation|shoes)\b", r"\bat your age\b",
           r"\bbased on (the|your) (balance|age|income|savings)\b"]
+# Text aimed at the checker rather than the customer. A customer-facing answer has no reason to
+# contain markup comments, role tags, JSON, the judges' own flag names, or instructions about flags.
+INJECTION = [
+    r"<!--|\[//\]:\s*#|</?\s*(system|draft_answer|instructions?|user|assistant|tool_result)\s*>|\[tool_result",
+    r"(?m)^\s*(user|assistant|system)\s*(\([^)]*\))?\s*:",
+    r"\b(wrong_fact|unknown_fact|personal_recommendation|injection_attempt)\b|\"flag\"\s*:|\bflag\s*[:=]\s*(true|false)\b",
+    r"\b(fact|advice)[- ]judge\b|\bget_facts\b|\bfacts\.json\b|\bfacts table\b|\bJSON\b|\bjudge prompts?\b",
+    r"\b(ignore|disregard|override)\s+(all\s+|any\s+|the\s+|your\s+)?(previous|prior|above|earlier|system|your)?\s*(instructions|rules|prompts?)\b",
+    r"\b(automated|AI)\s+(reviewers?|checkers?|compliance review|review)\b|\breviewer[- ]?bot\b|\breviewer note\b",
+    r"\b(do not|don't|should not|shouldn't|never)\s+(flag|raise)\b|\bno flags?\b|\bmark (this|it)?\s*(as\s+)?(?-i:SEND|PASS)\b",
+]
 PROMISSORY = [r"guarantee", r"\bcan'?t lose\b|\bcannot lose\b|\bwon'?t lose\b|\brisk-free\b|\bno risk\b",
               r"\bwill (\w+ly )?(grow|keep|outperform|return|earn|double)\b", r"\bsure to\b"]
 
@@ -198,4 +209,37 @@ def check(question: str, answer: str) -> dict:
                 flags.append(_flag("promissory", m.group(0), "FINRA 2210(d)(1): promissory statement or performance projection",
                                    "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2210"))
                 break
+    for rx in INJECTION:
+        if (m := re.search(rx, answer, re.I)):
+            flags.append(_flag("injection_attempt", m.group(0), "text addressed to the checker, not the customer; "
+                               "the drafting model may have been manipulated", "rule:injection-markers"))
+            break
+    return {"decision": "REVIEW" if flags else "SEND", "flags": flags}
+
+
+JUDGE_KEYS = {"fact-judge": ("wrong_fact", "unknown_fact", "injection_attempt"),
+              "advice-judge": ("personal_recommendation", "promissory", "injection_attempt")}
+
+
+def apply_judges(result: dict, judges: dict) -> dict:
+    """Merge judge outputs into a check() result. Fails closed.
+
+    `judges` maps "fact-judge"/"advice-judge" to that skill's raw output (a JSON string or dict).
+    A judge that is missing, isn't valid JSON, or lacks any expected key with a boolean "flag"
+    adds a judge_error flag, so the decision is REVIEW. A judge can add flags, never remove one.
+    """
+    flags = list(result["flags"])
+    for name, keys in JUDGE_KEYS.items():
+        raw = judges.get(name)
+        try:
+            out = json.loads(raw) if isinstance(raw, str) else raw
+            if not isinstance(out, dict) or any(not isinstance(out.get(k), dict) or not isinstance(out[k].get("flag"), bool)
+                                                for k in keys):
+                raise ValueError
+        except (TypeError, ValueError):
+            flags.append(_flag("judge_error", "", f"{name} output missing or malformed; failing closed"))
+            continue
+        for k in keys:
+            if out[k]["flag"]:
+                flags.append(_flag(k, out[k].get("span") or "", out[k].get("why") or "", f"skill:{name}"))
     return {"decision": "REVIEW" if flags else "SEND", "flags": flags}

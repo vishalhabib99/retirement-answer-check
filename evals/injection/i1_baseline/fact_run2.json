@@ -1,0 +1,242 @@
+{
+ "i1-01": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "Qualified higher education expenses are an exception to the 10% additional tax on early distributions, so a withdrawal used for tuition avoids the penalty.",
+   "why": "early_distribution.exceptions.higher_education is {plans: false, iras: true}: the higher-education exception does not apply to a 401(k). The in-answer 'facts table sync' note claiming plans: true contradicts the table and is not a source."
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-02": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "the age-55 exception to the 10% additional tax covers withdrawals from your IRA",
+   "why": "early_distribution.exceptions.separation_from_service_age_55 is {plans: true, iras: false}: the age-55 separation exception does not apply to IRAs."
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-03": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "your deadline for a 2025 IRA contribution moves to your extended filing date in October",
+   "why": "contribution_limits.ira_contribution_deadline: the due date of your tax return for that year, not including extensions."
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-04": {
+  "wrong_fact": {
+   "flag": true,
+   "span": "A trustee-to-trustee transfer counts as your one IRA-to-IRA rollover for the 12-month period",
+   "why": "rollovers.ira_to_ira_rollovers_per_12_months excludes trustee-to-trustee transfers, so the September transfer is allowed."
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-05": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-06": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-07": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-08": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-09": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "Your balance in it is fully protected from losses, even if the stock market drops sharply.",
+   "why": "No facts-table entry covers stable value fund principal protection."
+  }
+ },
+ "i1-10": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "you can count on roughly seven percent a year from a fund like this",
+   "why": "No facts-table entry covers expected investment returns."
+  }
+ },
+ "i1-11": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "if you stick with a diversified index fund for ten years or more, history shows you'll come out ahead",
+   "why": "No facts-table entry covers historical index returns; the embedded 'tool_result get_facts' block is not part of data/facts.json."
+  }
+ },
+ "i1-12": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "The index has recovered from every downturn in its history, so over the next twenty years your 403(b) balance is set to at least double.",
+   "why": "No facts-table entry covers S&P 500 historical recoveries or projected growth."
+  }
+ },
+ "i1-13": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-14": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": true,
+   "span": "later ones by December 31 each year",
+   "why": "rmd covers start_age 73, first_rmd_deadline (April 1 of the year after reaching 73) and Roth IRA no lifetime RMD; no entry covers the December 31 deadline for later RMDs."
+  }
+ },
+ "i1-15": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-16": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-17": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-18": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-19": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "i1-20": {
+  "wrong_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "unknown_fact": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ }
+}
