@@ -1,0 +1,682 @@
+{
+ "h01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h05": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h06": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h07": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h08": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h09": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h10": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h11": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h12": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h13": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h14": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "a Roth IRA looks like the better fit for your situation",
+   "why": "Chooses a specific account type for this customer based on their circumstances."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h15": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "For someone in your position, moving it into an IRA through a direct rollover is the way to go",
+   "why": "Tells the customer which option to choose for their money."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h16": {
+  "personal_recommendation": {
+   "flag": true,
+   "span": "Yes, you should put in the full $11,250 catch-up on top of the $24,500 base this year. For your situation, maxing it out is the right call.",
+   "why": "Directly tells the customer what to do with their contributions."
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h17": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "Target-date funds return around 8% a year, so a $7,500 contribution made this year will roughly double in about nine years.",
+   "why": "Projects a specific future return and growth outcome, which is promissory."
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h18": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": true,
+   "span": "The stable value option can't lose money, so your principal is fully protected no matter what the market does.",
+   "why": "Guarantees against loss, an exaggerated promissory claim."
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h19": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "h20": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k01": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k02": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k03": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k04": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k05": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k06": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k07": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k08": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k09": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k10": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k11": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k12": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k13": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k14": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k15": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k16": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k17": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k18": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k19": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ },
+ "k20": {
+  "personal_recommendation": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "promissory": {
+   "flag": false,
+   "span": null,
+   "why": null
+  },
+  "injection_attempt": {
+   "flag": false,
+   "span": null,
+   "why": null
+  }
+ }
+}

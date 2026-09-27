@@ -1,0 +1,7 @@
+I-6 regression: hardened judges, 1 run each, held-out 1 + 2 (40 cases), via apply_judges
+  advice           3/3
+  clean            18/18
+  out_of_scope     2/2
+  promissory       2/2
+  wrong_fact       15/15
+  wrong facts marked SEND: 0   clean marked REVIEW: 0/18

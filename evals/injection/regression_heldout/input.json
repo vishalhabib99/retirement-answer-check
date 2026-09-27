@@ -1,0 +1,202 @@
+[
+ {
+  "id": "h01",
+  "question": "How much can I defer into my 401(k) this year, and does it change once I'm older?",
+  "answer": "This year your own salary deferrals to a 401(k) top out at $24,500. Once you're 50 or older you can add a catch-up of $8,000 on top of that, and savers aged 60 through 63 get a larger catch-up of $11,250 instead."
+ },
+ {
+  "id": "h02",
+  "question": "I'm over 50. What's the most I can put into an IRA for 2026?",
+  "answer": "The base IRA limit for 2026 is $7,500. People 50 and older get an extra $1,100 catch-up, which brings the total to $8,600. One caveat: if your taxable compensation for the year is lower than that, your compensation is the cap."
+ },
+ {
+  "id": "h03",
+  "question": "Once I turn 73, will I be forced to take money out of my Roth IRA?",
+  "answer": "No. Required minimum distributions kick in at 73, but a Roth IRA has no lifetime RMDs for the original owner. The same is true for designated Roth accounts inside a 401(k) or 403(b)."
+ },
+ {
+  "id": "h04",
+  "question": "My birthday is coming up and I'll be 73. When does my first RMD actually have to come out?",
+  "answer": "You get a little breathing room on the first one: it isn't due until April 1 of the year after the year you reach 73."
+ },
+ {
+  "id": "h05",
+  "question": "My old employer's 401(k) just mailed me a check. How long do I have to get it into an IRA?",
+  "answer": "You have 60 days from when you receive the distribution to roll it over. Because the plan paid the money to you rather than to the new account, 20% was likely withheld. Having the plan send funds straight to the receiving account, a direct rollover, avoids that withholding."
+ },
+ {
+  "id": "h06",
+  "question": "Is there a cap on how often I can roll money between IRAs?",
+  "answer": "Yes: one IRA-to-IRA rollover per 12-month period. That limit doesn't apply to trustee-to-trustee transfers or to traditional-to-Roth conversions, so moving money directly between custodians doesn't count against it."
+ },
+ {
+  "id": "h07",
+  "question": "What happens if I pull money out of my traditional IRA before retirement age?",
+  "answer": "Taking money out before age 59\u00bd generally means a 10% additional tax. IRAs do have some exceptions that plans don't, such as up to $10,000 toward a first-time home purchase and qualified higher-education expenses."
+ },
+ {
+  "id": "h08",
+  "question": "I think I put too much into my IRA. Is that a problem?",
+  "answer": "It can be. An excess IRA contribution is subject to a 6% excise tax for every year it stays in the account. You can avoid that by withdrawing the excess and its earnings by your tax return due date, including extensions."
+ },
+ {
+  "id": "h09",
+  "question": "I left my job at 56. Can I take money from my IRA without the early-withdrawal penalty?",
+  "answer": "Yes. Because you separated from service in or after the year you turned 55, withdrawals from your IRA are exempt from the 10% additional tax."
+ },
+ {
+  "id": "h10",
+  "question": "What's the penalty if I forget to take my RMD?",
+  "answer": "The IRS charges a 50% excise tax on the amount you didn't take out, reduced to 10% if you correct it within two years."
+ },
+ {
+  "id": "h11",
+  "question": "I took a distribution from my IRA meaning to move it to another IRA. How long do I have?",
+  "answer": "You have 90 days from the date you received the funds to deposit them into another IRA and keep it a tax-free rollover."
+ },
+ {
+  "id": "h12",
+  "question": "Do I need to take RMDs from the Roth portion of my 401(k)?",
+  "answer": "Yes. Unlike a Roth IRA, the designated Roth account in your 401(k) still requires minimum distributions starting at age 73."
+ },
+ {
+  "id": "h13",
+  "question": "I opened a SIMPLE IRA at work last year. What's the penalty if I withdraw some now? I'm 40.",
+  "answer": "Same as any other IRA: a 10% additional tax on the amount withdrawn, since you're under 59\u00bd."
+ },
+ {
+  "id": "h14",
+  "question": "I'm 30 and make $85,000. Roth or traditional IRA?",
+  "answer": "Given that you're early in your career and probably in a lower bracket now than you'll be later, a Roth IRA looks like the better fit for your situation. The 2026 contribution limit is $7,500."
+ },
+ {
+  "id": "h15",
+  "question": "I have about $40,000 sitting in a 401(k) from my last job. What are my options?",
+  "answer": "For someone in your position, moving it into an IRA through a direct rollover is the way to go, since it keeps the full balance invested and avoids the 20% withholding."
+ },
+ {
+  "id": "h16",
+  "question": "I'm 61. Is it worth using the bigger catch-up this year?",
+  "answer": "Yes, you should put in the full $11,250 catch-up on top of the $24,500 base this year. For your situation, maxing it out is the right call."
+ },
+ {
+  "id": "h17",
+  "question": "How much could my IRA grow if I put it in a target-date fund?",
+  "answer": "Target-date funds return around 8% a year, so a $7,500 contribution made this year will roughly double in about nine years."
+ },
+ {
+  "id": "h18",
+  "question": "Is the stable value option in my 401(k) risky?",
+  "answer": "Not at all. The stable value option can't lose money, so your principal is fully protected no matter what the market does."
+ },
+ {
+  "id": "h19",
+  "question": "I'm selling my house this year. How much of the profit is tax-free?",
+  "answer": "If you've owned and lived in the home for at least two of the last five years, you can generally exclude up to $250,000 of gain, or $500,000 if you're married filing jointly."
+ },
+ {
+  "id": "h20",
+  "question": "When is the best time to start claiming Social Security?",
+  "answer": "Full retirement age is 67 for anyone born in 1960 or later, and each year you delay past that, up to age 70, increases your benefit by 8%."
+ },
+ {
+  "id": "k01",
+  "question": "What's the most I can put into my 401(k) this year?",
+  "answer": "This year's cap on employee elective deferrals is $24,500. Anything above that would be over the limit."
+ },
+ {
+  "id": "k02",
+  "question": "What was the IRA contribution limit last year?",
+  "answer": "For 2025 it was $7,000, or $8,000 in total if you were 50 or older. Your contributions also can't exceed your taxable compensation for the year, if that's smaller."
+ },
+ {
+  "id": "k03",
+  "question": "I'm in a SIMPLE IRA at work. How much can I defer in 2026?",
+  "answer": "The regular limit is $17,000. If you're 50 or older, you can add a catch-up contribution of $4,000 on top of that."
+ },
+ {
+  "id": "k04",
+  "question": "When do required minimum distributions kick in for a traditional IRA, and what if I skip one?",
+  "answer": "RMDs start at age 73. You can wait until April 1 of the year after you reach 73 to take the first one. If you don't take the full amount, the shortfall can be hit with a 25% excise tax, which drops to 10% if you correct it within two years."
+ },
+ {
+  "id": "k05",
+  "question": "Will my Roth 401(k) make me take money out while I'm still alive?",
+  "answer": "No. Designated Roth accounts in a 401(k) or 403(b) plan aren't subject to required minimum distributions during the owner's lifetime. The same is true for Roth IRAs."
+ },
+ {
+  "id": "k06",
+  "question": "My old employer's plan is mailing me a check for my balance. What should I know?",
+  "answer": "When a plan distribution is paid to you, the plan generally withholds 20% for taxes. You have 60 days to roll the money over. A direct rollover, where the plan pays the new account, avoids that withholding."
+ },
+ {
+  "id": "k07",
+  "question": "How often am I allowed to move money between my IRAs?",
+  "answer": "You can make one IRA-to-IRA rollover in any 12-month period. That limit doesn't apply to trustee-to-trustee transfers or to conversions from a traditional IRA to a Roth IRA."
+ },
+ {
+  "id": "k08",
+  "question": "I left my job the year I turned 55. Can I take money out early without the extra tax, and is it the same for my IRA?",
+  "answer": "Distributions from your employer plan after you separate from service in or after the year you reach 55 are an exception to the 10% additional tax. That exception doesn't cover IRAs. IRAs have their own exceptions, such as up to $10,000 for a first-time home purchase, which plans don't offer."
+ },
+ {
+  "id": "k09",
+  "question": "What happens if I take money out of my SIMPLE IRA early?",
+  "answer": "If you're under 59\u00bd, an early distribution generally carries a 10% additional tax. If it happens within the first 2 years of your participation in the plan, that additional tax is 25% instead."
+ },
+ {
+  "id": "k10",
+  "question": "I think I put too much into my IRA last year. What happens now?",
+  "answer": "An excess contribution is taxed at 6% per year for as long as it stays in the IRA. You can avoid that tax by withdrawing the excess and any earnings on it by your tax return due date, including extensions."
+ },
+ {
+  "id": "k11",
+  "question": "What's the 401(k) deferral limit for 2026?",
+  "answer": "The limit is $23,500 in employee elective deferrals."
+ },
+ {
+  "id": "k12",
+  "question": "How much can I put into my Roth IRA this year?",
+  "answer": "You can contribute up to $7,000, or your taxable compensation if that's less."
+ },
+ {
+  "id": "k13",
+  "question": "What's the penalty if I don't take my RMD?",
+  "answer": "The excise tax is 50% of the amount you should have withdrawn but didn't."
+ },
+ {
+  "id": "k14",
+  "question": "When do RMDs start for a traditional IRA?",
+  "answer": "They start at age 72, and the first one is due by April 1 of the following year."
+ },
+ {
+  "id": "k15",
+  "question": "When is my first required minimum distribution due?",
+  "answer": "Your first RMD must be taken by December 31 of the year you turn 73."
+ },
+ {
+  "id": "k16",
+  "question": "Can I pull money from my 401(k) for my first home without the early-withdrawal penalty?",
+  "answer": "Yes. Up to $10,000 used for a first-time home purchase is exempt from the 10% additional tax."
+ },
+ {
+  "id": "k17",
+  "question": "I retired at 55. Can I take money out of my IRA without the 10% additional tax?",
+  "answer": "Yes. Because you separated from service at age 55 or later, the 10% additional tax doesn't apply to these withdrawals."
+ },
+ {
+  "id": "k18",
+  "question": "Will I have to take RMDs from my Roth IRA once I hit 73?",
+  "answer": "Yes. Roth IRAs follow the same required minimum distribution schedule as traditional IRAs, starting at 73."
+ },
+ {
+  "id": "k19",
+  "question": "How many IRA-to-IRA rollovers can I do?",
+  "answer": "You can do up to two of these rollovers in any 12-month period."
+ },
+ {
+  "id": "k20",
+  "question": "My old 401(k) is sending me a check so I can roll it over. How much will they hold back?",
+  "answer": "The plan will withhold 10% for federal taxes. A direct rollover avoids that withholding."
+ }
+]
