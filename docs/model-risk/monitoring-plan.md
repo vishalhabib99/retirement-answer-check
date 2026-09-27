@@ -25,4 +25,4 @@ SR 26-2 §V: monitoring checks "the extent to which a model is performing as int
 
 ## Change control
 
-A change to rules, judge prompts, thresholds or eval cases is logged in the [eval plan changelog](../../EVAL_PLAN.md#6-changelog) with the date, the reason and who approved it. Frozen eval sets (`retirebench-v1`) are never edited. A new version gets a new tag.
+A change to rules, judge prompts, thresholds or eval cases is logged in the [eval plan changelog](../../EVAL_PLAN.md#7-changelog) with the date, the reason and who approved it. Frozen eval sets (`retirebench-v1`) are never edited. A new version gets a new tag.

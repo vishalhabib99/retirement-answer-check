@@ -46,4 +46,4 @@ All results are on **synthetic** cases. Thresholds were [set before the first ru
 
 ## Validation status
 
-**Approved for shadow mode only.** SEND on customer traffic waits on findings F-1 (independent validation), F-2 (real-traffic evidence) and F-11 (prompt injection). See the [validation report](validation-report.md).
+**Approved for shadow mode only.** SEND on customer traffic waits on findings F-1 (independent validation) and F-2 (real-traffic evidence). F-11 (prompt injection) closed 2026-09-26 for the attack types tested. See the [validation report](validation-report.md).

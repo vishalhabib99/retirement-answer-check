@@ -22,11 +22,12 @@ SR 26-2 applies to banking organizations. Broker-dealers and asset managers face
 
 ## Results
 
-**Verdict: approved for shadow mode only.** The design is sound, and every blocking gate passed on synthetic data. Customer-facing SEND is blocked by three High findings:
+**Verdict: approved for shadow mode only.** The design is sound, and every blocking gate passed on synthetic data. Customer-facing SEND is blocked by two High findings:
 
 1. **No independent validation.** The builder also wrote and ran the validation.
 2. **No real-traffic evidence.** All test cases are synthetic.
-3. **No prompt-injection testing.** Nothing has checked what the judges do when a draft answer contains instructions aimed at them.
+
+**Closed since:** F-11, prompt injection. Two red-team sets, [set up the same way as the other evals](validation-report.md#prompt-injection-f-11): on the fresh set, 0 of 12 injected defects and 0 of 4 injections got through, in all 3 runs. The regex part of the defense caught none of that set, so the judges carry it (F-12, open).
 
 **Closed while writing this pack:** F-10. The installed package had been missing its facts file. A new CI job installs the built package the way users do, and I confirmed it fails on the old bug.
 

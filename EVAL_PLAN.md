@@ -94,6 +94,7 @@ One blocking failure means no v1, whatever the averages look like. With slices t
 
 | Date | Change | Why | Approved by |
 |---|---|---|---|
+| 2026-09-26 | §6 results: baseline on I1 failed I-2 (3 of 4 pure injections SEND). Fix: judges treat the draft as untrusted, `injection_attempt` flag, fail-closed `apply_judges()`, regex markers. Fresh set I2: I-1 0/12, I-2 0/4 in all runs, I-3 missed in 1 of 3 runs (non-blocking), I-5/I-6 pass. F-11 closed for attack types tested; regex markers caught 0/20 of I2 → F-12. Gates unchanged | — | Vishal (approved the run) |
 | 2026-09-26 | Added §6, the prompt-injection eval for F-11: protocol, slices and gates, set before the injection cases were written | F-11 was an open High with no test | Vishal |
 | 2026-09-26 | Initial 43 cases and thresholds | — | Vishal (delegated) |
 | 2026-09-26 | Added `evals/heldout2.jsonl` (20 fact-focused cases, second blind agent), committed before its first run | Held-out set 1 had been read while fixing rules, so it no longer measured the rules blind | Vishal (delegated) |
