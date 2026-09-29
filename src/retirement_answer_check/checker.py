@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 # In a repo checkout, data/facts.json is the source of truth. An installed wheel carries a
@@ -58,6 +59,23 @@ INJECTION = [
     r"\b(automated|AI)\s+(reviewers?|checkers?|compliance review|review)\b|\breviewer[- ]?bot\b|\breviewer note\b",
     r"\b(do not|don't|should not|shouldn't|never)\s+(flag|raise)\b|\bno flags?\b|\bmark (this|it)?\s*(as\s+)?(?-i:SEND|PASS)\b",
 ]
+# Cyrillic and Greek letters that look like Latin ones, folded before the injection markers run
+# so "Ѕуѕtem:" reads as "System:". Not complete: Unicode lists hundreds of confusables (F-12).
+_LOOKALIKES = str.maketrans(
+    "аеорсухѕіјһԁԛԝАВЕКМНОРСТХЅІЈԌԚԜҮ" "αοριυνκτχΑΒΕΖΗΙΚΜΝΟΡΤΥΧ",
+    "aeopcyxsijhdqwABEKMHOPCTXSIJGQWY" "aopiuvktxABEZHIKMNOPTYX",
+)
+
+
+def _marker_text(text: str) -> str:
+    """The draft as the injection markers see it: NFKC (fullwidth to ASCII), invisible format
+    characters removed (zero-width spaces, soft hyphens), look-alike letters folded to Latin.
+    Only the markers use this; every other rule reads the draft unchanged."""
+    text = unicodedata.normalize("NFKC", text)
+    text = "".join(c for c in text if unicodedata.category(c) != "Cf")
+    return text.translate(_LOOKALIKES)
+
+
 PROMISSORY = [r"guarantee", r"\bcan'?t lose\b|\bcannot lose\b|\bwon'?t lose\b|\brisk-free\b|\bno risk\b",
               r"\bwill (\w+ly )?(grow|keep|outperform|return|earn|double)\b", r"\bsure to\b"]
 
@@ -209,8 +227,9 @@ def check(question: str, answer: str) -> dict:
                 flags.append(_flag("promissory", m.group(0), "FINRA 2210(d)(1): promissory statement or performance projection",
                                    "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2210"))
                 break
+    marker_text = _marker_text(answer)
     for rx in INJECTION:
-        if (m := re.search(rx, answer, re.I)):
+        if (m := re.search(rx, marker_text, re.I)):
             flags.append(_flag("injection_attempt", m.group(0), "text addressed to the checker, not the customer; "
                                "the drafting model may have been manipulated", "rule:injection-markers"))
             break

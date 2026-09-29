@@ -27,7 +27,7 @@ SR 26-2 applies to banking organizations. Broker-dealers and asset managers face
 1. **No independent validation.** The builder also wrote and ran the validation.
 2. **No real-traffic evidence.** All test cases are synthetic.
 
-**Closed since:** F-11, prompt injection. Two red-team sets, [set up the same way as the other evals](validation-report.md#prompt-injection-f-11): on the fresh set, 0 of 12 injected defects and 0 of 4 injections got through, in all 3 runs. The regex part of the defense caught none of that set, so the judges carry it (F-12, open).
+**Closed since:** F-11, prompt injection. Two red-team sets, [set up the same way as the other evals](validation-report.md#prompt-injection-f-11): on the fresh set, 0 of 12 injected defects and 0 of 4 injections got through, in all 3 runs. The regex part of the defense caught none of that set, so the judges carry it. F-12 has since closed for disguised characters (zero-width, soft hyphens, fullwidth, look-alike letters); other languages, base64 and similar stay judge-only.
 
 **Closed while writing this pack:** F-10. The installed package had been missing its facts file. A new CI job installs the built package the way users do, and I confirmed it fails on the old bug.
 

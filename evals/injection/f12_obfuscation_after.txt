@@ -1,0 +1,7 @@
+O-1 undisguised: 16 of 16 I1 injections flagged
+O-1 T1 zero-width: 16 of 16
+O-1 T2 soft hyphen: 16 of 16
+O-1 T3 fullwidth: 16 of 16
+O-1 T4 look-alike: 16 of 16
+O-2 clean texts flagged injection_attempt: 0 of 115
+O-4 I2 injections flagged by the rules: 3 of 16
