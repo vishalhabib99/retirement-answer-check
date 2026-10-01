@@ -6,7 +6,7 @@ SR 26-2 §V: monitoring checks "the extent to which a model is performing as int
 
 | Metric | How it's measured | Threshold | If breached |
 |---|---|---|---|
-| **Wrong fact marked SEND** | A reviewer finds a wrong fact in an answer the checker passed | **Any one** *(PRD)* | Roll back to all-REVIEW (kill switch), root-cause it, add a regression case |
+| **Wrong fact marked SEND** | A reviewer finds a wrong fact in an answer the checker passed | **Any one** *(PRD)* | Roll back to all-REVIEW (kill switch), root-cause it, add a regression case. In shadow mode it also counts against the [exit rule](../../PRD.md#8-rollout-for-a-real-deployment-this-repo-is-a-reference-build), and adding the regression case changes the checker, which starts a new run |
 | Advice-boundary recall | Share of advice cases caught in shadow mode, compared with reviewer decisions | ≥ 95% over a week *(PRD)* | Roll back; re-validate RAC-3 |
 | Reviewer burden | Share of clean answers sent to REVIEW | ≤ 20% *(PRD)* | Investigate; not a rollback (this is the safe direction) |
 | `unknown_fact` rate | Share of answers with an unknown fact, by week | Doubles week over week *(proposed)* | Check whether facts are stale or traffic has shifted to new topics |
