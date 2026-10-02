@@ -68,6 +68,14 @@ The 2 false REVIEWs were true statements the facts table doesn't cover (benefici
 
 **How much "0 of 25" proves.** It passes the gate, but it doesn't show the miss rate is zero. With 0 misses in 25, the true rate could still be as high as **11%** (one-sided 95% exact bound). Showing it's under 1% would take **299** wrong-fact cases in a row with none missed. Collecting that is what shadow mode is for.
 
+**Shadow-mode status.** The exit rule in [PRD §8](PRD.md#8-rollout-for-a-real-deployment-this-repo-is-a-reference-build) was fixed before any shadow data exists. This table is rebuilt from [`shadow/log.jsonl`](shadow/log.jsonl) by `python shadow/status.py`, never edited by hand, and CI fails if the two disagree. Any change to the rule after a miss shows up in the history.
+
+<!-- shadow-status -->
+| Run | Checker | Cases reviewed | Misses | Exit at | Status |
+|---|---|---|---|---|---|
+| – | – | 0 | 0 | 381 | Not started: no shadow traffic yet |
+<!-- /shadow-status -->
+
 **Limits of these results:**
 - 83 synthetic cases. Real traffic is messier, and a real deployment should start in shadow mode ([PRD §8](PRD.md#8-rollout-for-a-real-deployment-this-repo-is-a-reference-build)).
 - The judges and the case writers are all Claude, so they may share blind spots.
